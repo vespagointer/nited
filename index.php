@@ -66,6 +66,7 @@ include_once "navbar.php";
         <?php
 if (empty($module)) {
  include_once "main.php";
+ $module = "main";
 } else if (file_exists($module . ".php")) {
  include_once $module . ".php";
 } else {
@@ -89,6 +90,7 @@ if (empty($module)) {
     <script src="js/bootstrap-datepicker.min.js"></script>
     <script src="locales/bootstrap-datepicker.th.min.js"></script>
     <script src="js/bootstrap-datepicker-BE.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     <script>
     $(document).on('change', '#what', function(e) {
         var swhat = $(this).val();

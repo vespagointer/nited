@@ -9419,3 +9419,59 @@ fieldset:disabled .btn {
 .ck-editor__editable {
   min-height: 400px;
 }
+tr.pastel {
+  vertical-align: middle;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+tr.pastel.pastel1 {
+  background-color: #f3d6ae;
+}
+tr.pastel.pastel2 {
+  background-color: #eeb5a1;
+}
+tr.pastel.pastel3 {
+  background-color: #eeb7bc;
+}
+tr.pastel.pastel4 {
+  background-color: #e0b5d0;
+}
+tr.pastel.pastel5 {
+  background-color: #b7a9cd;
+}
+tr.pastel.pastel6 {
+  background-color: #a6b9da;
+}
+tr.pastel.pastel7 {
+  background-color: #a4d6ef;
+}
+tr.pastel.pastel8 {
+  background-color: #aad5ce;
+}
+tr.pastel.pastel9 {
+  background-color: #bbd8b8;
+}
+tr.pastel.pastel10 {
+  background-color: #e7e9ba;
+}
+
+tr.news {
+  vertical-align: middle;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+tr.news.news1 {
+  background-color: #e17e76;
+}
+tr.news.news2 {
+  background-color: #e3baa8;
+}
+tr.news.news3 {
+  background-color: #aa7b6f;
+}
+tr.news.news4 {
+  background-color: #fed797;
+}
+tr.news.news5 {
+  background-color: #2e8364;
+}
