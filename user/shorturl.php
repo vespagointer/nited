@@ -4,7 +4,6 @@ $url = "http://spmnan.ga/";
 <div class="d-flex justify-content-center">
     <h3>สร้าง Short URLs</h3>
 </div>
-</div>
 
 <form id="getURL" action="geturl.php" method="POST">
     <div class="row mb-3">
@@ -46,7 +45,7 @@ $url = "http://spmnan.ga/";
             title="ต้องกรอก ถ้าต้องการใช้ระบบตรวจสอบโรงเรียน">
             <?php
 
-$sql    = "SELECT `name` FROM `tb_school`";
+$sql = "SELECT `name` FROM `tb_school`";
 $result = mysqli_query($conn, $sql);
 while ($school = mysqli_fetch_assoc($result)) {
  echo "<option value='" . $school["name"] . "'>" . $school["name"] . "</option>";

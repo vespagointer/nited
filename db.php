@@ -41,3 +41,27 @@ function getteacher($conn, $parm, $id)
  $data = mysqli_fetch_row($result);
  return $data[0];
 }
+
+function LinkSchool($conn, $id)
+{
+ $link = "<a href=\"index.php?module=showschool&id=$id\" target=\"_blank\">โรงเรียน";
+ $link .= getschool($conn, "name", $id);
+ $link .= "</a>";
+ return $link;
+}
+
+function LinkSchool2($conn, $id)
+{
+ $link = "<a href=\"index.php?module=showschool&id=$id\" target=\"_blank\">";
+ $link .= getschool($conn, "name", $id);
+ $link .= "</a>";
+ return $link;
+}
+
+function getdep($conn, $id)
+{
+ $sql = "SELECT `name` FROM `tb_dep` WHERE `id`='$id'";
+ $result = mysqli_query($conn, $sql);
+ $data = mysqli_fetch_row($result);
+ return $data[0];
+}

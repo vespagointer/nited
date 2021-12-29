@@ -1,0 +1,33 @@
+{
+  "_readMe": "Review list of sync operations, then use Ftp-sync: Commit command to accept changes. Note that if you're not in your root directory then all the parent directories will also be uploaded",
+  "_warning": "This file should not be saved, reopened review file won't work!",
+  "filesToUpdate": ["db.php", "teacher/index.php", "temp/qrcode.png"],
+  "filesToAdd": [
+    "bb.html",
+    "example/1.jpg",
+    "example/2.jpg",
+    "example/3.jpg",
+    "example/cer.jpg",
+    "example/gallery/01.JPG",
+    "example/gallery/02.JPG",
+    "example/gallery/03.JPG",
+    "example/gallery/04.JPG",
+    "example/gallery/05.JPG",
+    "example/gallery/06.JPG",
+    "example/gallery/07.JPG",
+    "example/gallery/08.JPG",
+    "example/gallery/09.JPG",
+    "example/gallery/10.JPG",
+    "example/gallery/11.JPG",
+    "example/gallery/12.JPG",
+    "js/gallery.js",
+    "pictures/2564/12/1640514436.jpg",
+    "teacher/404.php",
+    "teacher/js/main.js",
+    "teacher/main.php",
+    "teacher/update.php"
+  ],
+  "dirsToAdd": ["example", "example/gallery", "teacher/js"],
+  "filesToRemove": ["scafiles/2564/7_25641223120910_0.jpg"],
+  "dirsToRemove": []
+}

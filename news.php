@@ -7,6 +7,13 @@ $sql = "SELECT * FROM `tb_scpr` WHERE `id`=$id";
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
 extract($data);
+$school = LinkSchool($conn, $sc_id);
+if ($id == 0) {
+ $school = "ตัวอย่างพิทยาคม";
+ $name = "ข่าวประชาสัมพันธ์ ตัวอย่าง";
+ $content = '<p style="text-align:center;"><span class="text-big" style="color:hsl(0, 75%, 60%);"><strong>กีฑามัธยม จังหวัดน่าน</strong></span></p><figure class="image image_resized" style="width:59.65%;"><img src="../pictures/2564/12/1640514436.jpg"></figure>';
+ $date = "01/01/2565 01:02:03";
+}
 ?>
 <div class="col-12">
     <h5 class="mt-4 mb-3 fw-bold"><?=$name;?></h5>
@@ -14,7 +21,6 @@ extract($data);
         <?=$content;?>
     </div>
     <div style="clear:both">
-        <span class="fw-bold">เผยแพร่ข่าวโดย : </span> <a
-            href="index.php?module=school&id=<?=$id;?>"><?=getschool($conn, "name", $data["sc_id"]);?></a> (<?=$date;?>)
+        <span class="fw-bold">เผยแพร่ข่าวโดย : </span><?=$school;?> (<?=$date;?>)
     </div>
 </div>

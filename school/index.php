@@ -148,8 +148,8 @@ for ($i = 0; $i < $arrno; $i++) {
                         <i class="fas fa-dice-d20"></i> ข้อมูลพื้นฐานโรงเรียน
                     </a>
                     <ul class="collapse list-unstyled" id="subMenu2">
-                        <li><a href="index.php?module=editschool"><i class="fas fa-edit"></i> แก้ไขข้อมูลพื้นฐาน</a>
-                        </li>
+                        <!-- <li><a href="index.php?module=editschool"><i class="fas fa-edit"></i> แก้ไขข้อมูลพื้นฐาน</a>
+                        </li> -->
                         <li><a href="index.php?module=teacher"><i class="fas fa-users"></i> ข้อมูลคครู</a></li>
                         <!-- <li><a href="index.php?module=student"><i class="fas fa-user-graduate"></i> ข้อมูลนักเรียน</a>
                         </li> -->
@@ -162,17 +162,22 @@ for ($i = 0; $i < $arrno; $i++) {
                         <li><a href="index.php?module=pr">
                                 <i class="fas fa-bullhorn"></i> ข่าวประชาสัมพันธ์</a>
                         </li>
-                    </ul>
+                        <li><a href="index.php?module=gallery">
+                                <i class="fas fa-images"></i> ภาพกิจกรรม</a>
+                        </li>
                 </li>
-                <li>
-                    <a href="#subMenu4" aria-controls="subMenu3" data-bs-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">
-                        <i class="fas fa-tools"></i> เครื่องมือ
-                    </a>
-                    <ul class="collapse list-unstyled" id="subMenu4">
-                        <li><a href="index.php?module=shorturl"><i class="fas fa-link"></i> สร้าง Short URLs</a></li>
-                        <li><a href="index.php?module=qrcode"><i class="fas fa-qrcode"></i> สร้าง QR Code</a></li>
-                </li>
+
+            </ul>
+            </li>
+            <li>
+                <a href="#subMenu4" aria-controls="subMenu3" data-bs-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle">
+                    <i class="fas fa-tools"></i> เครื่องมือ
+                </a>
+                <ul class="collapse list-unstyled" id="subMenu4">
+                    <!-- <li><a href="index.php?module=shorturl"><i class="fas fa-link"></i> สร้าง Short URLs</a></li> -->
+                    <li><a href="index.php?module=qrcode"><i class="fas fa-qrcode"></i> สร้าง QR Code</a></li>
+            </li>
 
             </ul>
             </li>

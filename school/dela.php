@@ -23,7 +23,7 @@ if (@$_GET["do"] == "del") {
   //echo $file;
   @unlink($file);
   $fid = $data2["id"];
-  $sql3 = "DELETE FROM `tb_file` WHERE`id`='$fid'";
+  $sql3 = "DELETE FROM `tb_scafile` WHERE`id`='$fid'";
   mysqli_query($conn, $sql3);
  }
 }

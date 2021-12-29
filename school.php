@@ -3,6 +3,7 @@ if (!defined("KRITSADAPONG")) {
  @header("location:404.php");
  @die("Access Denied!");
 }
+require_once "db.php";
 if (@$_POST["key"] != null && (@$_POST["key"] != "all")) {
  $key = mysqli_real_escape_string($conn, $_POST["key"]);
  $sql = "SELECT * FROM `tb_school` WHERE `area`='$key'";
@@ -59,7 +60,7 @@ while ($data = mysqli_fetch_array($result)) {
             <td class="text-center"><?=$id10;?></td>
             <td class="text-center"><?=$id8;?></td>
             <td class="text-center"><?=$id6;?></td>
-            <td class="ps-1"><?=$name;?></td>
+            <td class="ps-1"><a href="index.php?module=showschool&id=<?=$id;?>" target="_blank"><?=$name;?></a></td>
             <td class="ps-1"><?=$director;?></a></td>
             <td class="ps-1"><?=$area;?></a></td>
         </tr>

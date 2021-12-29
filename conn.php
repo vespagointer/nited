@@ -19,4 +19,4 @@ global $conn;
 $conn = mysqli_connect($db_host, $db_user, $db_pwd, $db_name);
 mysqli_set_charset($conn, "utf8");
 
-//https://server25.dragonhispeed.net/phpMyAdmin/
+//https://119.59.100.49:8443/phpMyAdmin/

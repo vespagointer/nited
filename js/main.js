@@ -60,6 +60,12 @@ function ChartScales() {
   return scales;
 }
 $(document).ready(function () {
+  var myCarousel = $(".carousel");
+  var carousel = new bootstrap.Carousel(myCarousel, {
+    interval: 2000,
+    wrap: true,
+  });
+
   const ctx = $("#award");
   ctx.height(300);
   const myChart = new Chart(ctx, {

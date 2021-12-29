@@ -52,6 +52,11 @@ for ($i = 0; $i < $arrno; $i++) {
 
     <link href="css/theme.css" rel="stylesheet">
     <link href="css/bootstrap-datepicker.css" rel="stylesheet">
+    <?php
+if ($module == "gallery") {
+ echo '<link rel="stylesheet" href="css/lightbox.css">';
+}
+?>
 </head>
 
 <body>
@@ -124,6 +129,9 @@ if (@$wysiwyg == true) {
 }
 if (file_exists("js/" . $module . ".js")) {
  echo "<script src='js/$module.js'></script>";
+}
+if ($module == "gallery") {
+ echo '<script src="js/lightbox.js"></script>';
 }
 ?>
 </body>

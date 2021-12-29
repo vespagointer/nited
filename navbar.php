@@ -3,14 +3,14 @@
 // returns: t1
 $page = $module;
 if (!isset($page)) {
-    $page = "index";
+ $page = "index";
 }
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php"><i class="fas fa-chart-line" style="font-size:36px;"></i> <i
-                class="bi bi-ui-checks"></i>&nbsp;งานนิเทศ สพม.น่าน</span></a>
+                class="bi bi-ui-checks"></i>&nbsp;สพม.น่าน</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
