@@ -56,6 +56,10 @@ for ($i = 0; $i < $arrno; $i++) {
 if ($module == "gallery") {
  echo '<link rel="stylesheet" href="css/lightbox.css">';
 }
+
+if ($module == "teacherlist") {
+ echo '<link rel="stylesheet" href="DataTables/datatables.min.css">';
+}
 ?>
 </head>
 
@@ -132,6 +136,11 @@ if (file_exists("js/" . $module . ".js")) {
 }
 if ($module == "gallery") {
  echo '<script src="js/lightbox.js"></script>';
+}
+
+if ($module == "teacherlist") {
+
+ echo '<script src="DataTables/datatables.min.js"></script>';
 }
 ?>
 </body>

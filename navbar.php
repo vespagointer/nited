@@ -35,6 +35,10 @@ if (!isset($page)) {
                         href="index.php?module=school">รายชื่อโรงเรียน</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?php echo ($page == 'teacherlist') ? 'active' : ''; ?>"
+                        href="index.php?module=teacherlist">รายชื่อครู</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?php echo ($page == 'mobile') ? 'active' : ''; ?>"
                         href="index.php?module=mobile">เบอร์โทร</a>
                 </li>

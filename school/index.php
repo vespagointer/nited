@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-if ($_SESSION["logined"] != true) {@header("location:../login.php");}
+if ($_SESSION["ss_status"] != "school") {@header("location:../login.php");}
 $module = @$_GET["module"];
 define("KRITSADAPONG", true);
 require_once "../conn.php";
@@ -10,16 +10,16 @@ $sql = "SELECT `id`,`prefix`,`name`,`surname` FROM `tb_user` WHERE `id` != '$adm
 $result = mysqli_query($conn, $sql);
 $n = 0;
 while ($data = mysqli_fetch_array($result)) {
- $_SESSION["snID"][$n] = $data["id"];
- $_SESSION["snName"][$data["id"]] = $data["name"];
- $_SESSION["snSName"][$data["id"]] = $data["surname"];
- $n++;
+    $_SESSION["snID"][$n] = $data["id"];
+    $_SESSION["snName"][$data["id"]] = $data["name"];
+    $_SESSION["snSName"][$data["id"]] = $data["surname"];
+    $n++;
 }
 mysqli_free_result($result);
 $arrno = count($_SESSION["snID"]);
 
 for ($i = 0; $i < $arrno; $i++) {
- @$sn = $sn . "<option value=\"" . $_SESSION["snID"][$i] . "\">ศน." . $_SESSION["snName"][$_SESSION["snID"][$i]] . "</option>";
+    @$sn = $sn . "<option value=\"" . $_SESSION["snID"][$i] . "\">ศน." . $_SESSION["snName"][$_SESSION["snID"][$i]] . "</option>";
 }
 ?>
 <!doctype html>
@@ -178,9 +178,9 @@ for ($i = 0; $i < $arrno; $i++) {
                     <!-- <li><a href="index.php?module=shorturl"><i class="fas fa-link"></i> สร้าง Short URLs</a></li> -->
                     <li><a href="index.php?module=qrcode"><i class="fas fa-qrcode"></i> สร้าง QR Code</a></li>
             </li>
-
             </ul>
             </li>
+            <li><a href="index.php?module=download"><i class="fas fa-download"></i> ดาวน์โหลดเอกสาร</a></li>
             <?php if ($_SESSION["ss_status"] == "admin") {?>
             <li><a href="../admin/"><i class="fas fa-server"></i> Admin Control Panel</a></li>
             <?php }?>
@@ -210,12 +210,12 @@ echo $_SESSION["ss_name"];
                 <div id="page">
                     <?php
 if (empty($module)) {
- include_once "main.php";
- $module = "main";
+    include_once "main.php";
+    $module = "main";
 } else if (file_exists($module . ".php")) {
- include_once $module . ".php";
+    include_once $module . ".php";
 } else {
- include_once "404.php";
+    include_once "404.php";
 }
 ?>
                 </div>
@@ -329,10 +329,10 @@ if (empty($module)) {
     </script>
     <?php
 if (@$wysiwyg == true) {
- echo "<script src=\"../js/ckeditor.js\"></script>\n";
+    echo "<script src=\"../js/ckeditor.js\"></script>\n";
 }
 if (file_exists("js/" . $module . ".js")) {
- echo "<script src='js/$module.js'></script>";
+    echo "<script src='js/$module.js'></script>";
 }
 ?>
 </body>
