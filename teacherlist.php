@@ -11,10 +11,25 @@ while ($data = mysqli_fetch_row($result)) {
  $depname[$data[0]] = $data[1];
 }
 
+require_once "db.php";
+if (isset($_GET["scid"]) && (int) $_GET["scid"] != 0) {
+ $scid = (int) $_GET["scid"];
+ $sql = "SELECT `id`,`sc_id`,`name`,`pos`,`dep` FROM `tb_teacher` WHERE `sc_id`=$scid";
+} else {
+ $sql = "SELECT `id`,`sc_id`,`name`,`pos`,`dep` FROM `tb_teacher` WHERE `sc_id`!=99 AND `sc_id`!=0";
+}
+$result = mysqli_query($conn, $sql);
+
 ?>
+
 <div class="row mt-md-3">
     <div class="text-center mb-2">
-        <h3>รายชื่อครู สังกัด สพม.น่าน</h3>
+        <h3>รายชื่อบุคลากร สังกัด สพม.น่าน</h3>
+        <?php
+if (isset($scid)) {
+ echo "<h5 class='mb-3'>โรงเรียน" . getschool($conn, "name", $scid) . "</h5>";
+}
+?>
     </div>
     <table class="display nowrap mb-2" id="teacher" style="width:100%">
         <thead>
@@ -27,9 +42,7 @@ while ($data = mysqli_fetch_row($result)) {
         </thead>
         <tbody>
             <?php
-//require_once "db.php";
-$sql = "SELECT `id`,`sc_id`,`name`,`pos`,`dep` FROM `tb_teacher` WHERE `sc_id`<31";
-$result = mysqli_query($conn, $sql);
+
 while ($data = mysqli_fetch_assoc($result)):
  extract($data);
  ?>

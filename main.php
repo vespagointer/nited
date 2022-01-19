@@ -1,5 +1,5 @@
 <?php
-define("KRITSADAPONG", true);
+@define("KRITSADAPONG", true);
 require_once "conn.php";
 require_once "db.php";
 
@@ -24,9 +24,6 @@ if ($aCount > 0) {
   }
   $count++;
  }
-} else {
- $aLabels = ["โรงเรียนตัวอย่าง 1", "โรงเรียนตัวอย่าง 2", "โรงเรียนตัวอย่าง 3", "โรงเรียนตัวอย่าง 4", "โรงเรียนตัวอย่าง 5"];
- $aData = [9, 8, 8, 7, 5];
 }
 
 $sql = "SELECT * FROM `tb_statistics` WHERE `name`='project'";
@@ -50,36 +47,33 @@ if ($pCount > 0) {
   }
   $count++;
  }
-} else {
- $pLabels = ["โรงเรียนตัวอย่าง 1", "โรงเรียนตัวอย่าง 2", "โรงเรียนตัวอย่าง 3", "โรงเรียนตัวอย่าง 4", "โรงเรียนตัวอย่าง 5"];
- $pData = [20, 15, 11, 9, 3];
 }
 ?>
 
 
 <?php
-    $sql = "SELECT * FROM `tb_gallery` ORDER BY `id` DESC LIMIT 5";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_num_rows($result);
-    ?>
+$sql = "SELECT * FROM `tb_gallery` ORDER BY `id` DESC LIMIT 5";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_num_rows($result);
+?>
 <div class="mt-3"></div>
 <div class="offset-1 col-10">
     <div id="NanGallery" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <?php if($row==0): ?>
+            <?php if ($row == 0): ?>
             <button type="button" data-bs-target="#NanGallery" data-bs-slide-to="0" aria-label="Slide 1" class="active"
                 aria-current="true"></button>
             <button type="button" data-bs-target="#NanGallery" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#NanGallery" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <?php endif;
 
-                for($i=0;$i<$row;$i++) :
-                    $ac = "";
-                    if ($i == 0) {$ac = "class=\"active\" aria-current=\"true\"";}
-            ?>
+for ($i = 0; $i < $row; $i++):
+ $ac = "";
+ if ($i == 0) {$ac = "class=\"active\" aria-current=\"true\"";}
+ ?>
             <button type="button" data-bs-target="#NanGallery" data-bs-slide-to="<?=$i;?>" aria-label="Slide <?=$i;?>"
                 <?=$ac;?>></button>
-            <?php endfor ?>
+            <?php endfor?>
         </div>
         <div class="carousel-inner">
             <?php
@@ -104,9 +98,9 @@ while ($data = mysqli_fetch_assoc($result)):
                 </a>
             </div>
             <?php
-            endwhile;
-            if($row==0):        
-            ?>
+endwhile;
+if ($row == 0):
+?>
             <div class="center-cropped carousel-item active" style="background-image: url('example/1.jpg');">
                 <a href="index.php?module=gallery&id=0">
                     <img src="example/1.jpg" alt="ตัวอย่าง" />
@@ -162,44 +156,71 @@ while ($data = mysqli_fetch_assoc($result)):
 $sql = "SELECT * FROM `tb_scpr` ORDER BY `id` DESC LIMIT 5";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-    $i=1;
+ $i = 1;
  while ($data = mysqli_fetch_assoc($result)) {
-     ?>
+  ?>
                 <tr class="news news<?=$i;?>">
                     <td scope="row"><i class="fas fa-bullhorn text-white fs-5"></i></td>
                     <td>
                         <a href="index.php?module=news&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a>
-                        <br />เมื่อ : <?=$data["date"];?>
+                        <br />เมื่อ : <?=renderDate2($data["date"]);?>
                     </td>
-                    <td><?=LinkSchool($conn,$data["sc_id"]);?></td>
-                </tr>
-                <?
- $i++;
-}
-} else {
- ?>
-
-                <?php for ($i = 1; $i <= 5; $i++) {?>
-                <tr class="news news<?=$i;?>">
-                    <td scope="row"><i class="fas fa-bullhorn text-white fs-5"></i></td>
                     <td>
-                        <a href="index.php?module=news&id=0" target="_blank">ข้อมูลตัวอย่าง <?=$i;?></a>
-                        <br />เมื่อ : <?=date("Y-m-d H:i:s");?>
+                        <?php
+if ($data["sc_id"] == 99) {
+   echo LinkSchool2($conn, $data["sc_id"]);
+  } else {
+   echo LinkSchool($conn, $data["sc_id"]);
+  }
+  ?>
+
                     </td>
-                    <td>โรงเรียน <?=$i;?></td>
                 </tr>
                 <?php
-}
+$i++;
+ }
 }?>
             </tbody>
         </table>
-        <div class="text-end mb-5">
-            <a href="#" type="button" class="btn btn-danger text-white fs-6">
+        <div class="text-end mb-2">
+            <a href="index.php?module=list&mode=scpr" type="button" class="btn btn-danger text-white fs-6">
                 <i class="fas fa-bullhorn"></i> ดูข่าวทั้งหมด</a>
         </div>
     </div>
 </div>
 
+
+<?php
+$sql = "SELECT * FROM `tb_statistics` WHERE `name`='perupdate'";
+$result = mysqli_query($conn, $sql);
+$per = mysqli_fetch_row($result);
+array_shift($per);
+array_shift($per);
+$sql = "SELECT `name` FROM `tb_school` WHERE `id`!=99";
+$result = mysqli_query($conn, $sql);
+$name = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$name = array_column($name, "name");
+
+$sPer = json_encode($per, JSON_UNESCAPED_UNICODE);
+$sName = json_encode($name, JSON_UNESCAPED_UNICODE);
+
+?>
+<div style="height:400px" class="mb-5">
+    <h6 class="text-center mt-4 mb-2 fw-bold text-primary">ร้อยละของครูที่กรอกข้อมูลรายโรงเรียน</h6>
+    <canvas id="PerChart"></canvas>
+    <div class="text-muted text-center">*หมายเหตุ : ข้อมูลอัพเดททุกๆ ชั่วโมง</div>
+    <div class="text-center my-3"><a href="index.php?module=report"
+            class="btn btn-warning btn-sm text-white">ดูสถิติทั้งหมด คลิกที่นี่</a></div>
+</div>
+<script>
+var sPer = <?=$sPer;?>;
+var sName = ["ศ.ว.", "ศ.น.", "บส.ว", "น.อ.", "ม.ร.", "บ.ล.", "น.น.", "ปว.", "ศ.ศ.", "ม.ง.", "ม.ก.จ", "ท.พ.", "ส.ว.",
+    "น.พ.", "ม.ว.", "ส.", "สธ.ร.", "ส.ท.พ.", "ท.ช.", "ช.ก.", "พ.พ.", "น.ม.", "ม.ล.", "ส.พ.ค.", "บ.ก.", "ต.ร.",
+    "น.ค.", "ศ.น.น.", "ม.พ.", "น.ว."
+];
+</script>
+<br clear="all" />
+<br clear="all" />
 
 <div class="row my-3">
     <div class="col-lg-6">
@@ -221,86 +242,121 @@ if (mysqli_num_rows($result) > 0) {
 </div>
 
 
+
 <div class="row my-3">
     <div class="col-lg-6">
         <div class="text-center fw-bold fs-7 text-dark mb-3">10 รางวัลล่าสุดของโรงเรียน</div>
-        <table class="table">
+        <table class="table table-sm">
             <tbody>
                 <?php
 $sql = "SELECT * FROM `tb_scaward` ORDER BY `id` DESC LIMIT 10";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-    $i=1;
+ $i = 1;
  while ($data = mysqli_fetch_assoc($result)) {
-     ?>
+  ?>
                 <tr class="pastel pastel<?=$i;?>">
                     <td scope="row"><i class="fas fa-trophy text-white fs-5"></i></td>
                     <td><a href="index.php?module=award&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a>
                     </td>
-                    <td><?=LinkSchool($conn,$data["sc_id"]);?></td>
-                </tr>
-                <?
- $i++;
-}
-} else {
- ?>
-
-                <?php for ($i = 1; $i <= 10; $i++) {?>
-                <tr class="pastel pastel<?=$i;?>">
-                    <td scope="row"><i class="fas fa-trophy text-white fs-5"></i></td>
-                    <td><a href="index.php?module=award&id=0" target="_blank">ข้อมูลตัวอย่าง <?=$i;?></td>
-                    <td>โรงเรียน <?=$i;?></td>
+                    <td><?=LinkSchool($conn, $data["sc_id"]);?></td>
                 </tr>
                 <?php
-}
+$i++;
+ }
 }?>
             </tbody>
         </table>
         <div class="text-end mb-5">
-            <a href="#" type="button" class="btn btn-danger text-white fs-6">
+            <a href="index.php?module=list&mode=scaward" type="button" class="btn btn-danger text-white fs-6">
                 <i class="fas fa-bullhorn"></i> รางวัลทั้งหมด</a>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="text-center fw-bold fs-7 text-dark mb-3">10 รางวัลล่าสุดของครู</div>
-        <table class="table">
+        <table class="table table-sm">
             <tbody>
                 <?php
-$sql = "SELECT * FROM `tb_tcaward` ORDER BY `id` DESC LIMIT 10";
+$sql = "SELECT * FROM `tb_taward_school` UNION SELECT * FROM `tb_taward_self`UNION SELECT * FROM `tb_taward_student`ORDER By `id` DESC LIMIT 10;";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-    $i=1;
+ $i = 1;
  while ($data = mysqli_fetch_assoc($result)) {
-     ?>
+  //$text = preg_replace('\.\.\/', '', $data["adoc1"]);
+  $type = explode("/", $data["adoc1"]);
+  if ($type[0] == "..") {
+   array_shift($type);
+  }
+  // $type = explode("/", $text);
+  ?>
                 <tr class="pastel pastel<?=$i;?>">
                     <td scope="row"><i class="fas fa-award text-white fs-5"></i></td>
-                    <td><?=$data["name"];?></td>
-                    <td><?=getteacher($conn,"name",$data["tc_id"]);?></td>
-                </tr>
-                <?
- $i++;
-}
-} else {
- ?>
-
-                <?php for ($i = 1; $i <= 10; $i++) {?>
-                <tr class="pastel pastel<?=$i;?>">
-                    <td scope="row"><i class="fas fa-award text-white fs-5"></i></td>
-                    <td>ข้อมูลตัวอย่าง <?=$i;?></td>
-                    <td>ครู <?=$i;?></td>
+                    <td><a href="../index.php?module=taward&atype=<?=$type[1];?>&id=<?=$data["id"];?>"
+                            target="_blank"><?=$data["aname"];?></a></td>
+                    <td><a href="../index.php?module=profile&id=<?=$data["tid"];?>"
+                            target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
                 </tr>
                 <?php
-}
+$i++;
+ }
 }?>
             </tbody>
         </table>
         <div class="text-end mb-5">
-            <a href="#" type="button" class="btn btn-danger text-white fs-6">
+            <a href="index.php?module=list&mode=taward" type="button" class="btn btn-danger text-white fs-6">
                 <i class="fas fa-bullhorn"></i> รางวัลทั้งหมด</a>
         </div>
     </div>
 </div>
 
+<div class="row my-3">
+    <div class="col-lg-6">
+        <div class="text-center fw-bold fs-7 text-dark mb-3">10 รายงานการอบรม/ประชุม/สัมนา</div>
+        <table class="table table-primary table-striped table-sm">
+            <tbody>
+                <?php
+$sql = "SELECT * FROM `tb_train1` ORDER By `id` DESC LIMIT 10;";
+$result = mysqli_query($conn, $sql);
+while ($data = mysqli_fetch_assoc($result)) {
+ ?>
+                <tr>
+                    <td><a href="index.php?module=train&type=train1&id=<?=$data["id"];?>" target="_blank">
+                            <?=$data["tName"];?></a></td>
+                    <td><a href="index.php?module=profile&id=<?=$data["tid"];?>"
+                            target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
+                </tr>
+                <?php }?>
+            </tbody>
+        </table>
+        <div class="text-end mb-5">
+            <a href="index.php?module=list&mode=train1" type="button" class="btn btn-danger text-white fs-6">
+                <i class="fas fa-bullhorn"></i> ดูทั้งหมด</a>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="text-center fw-bold fs-7 text-dark mb-3">10 รายงานการพัฒนาตนเองล่าสุด</div>
+        <table class="table table-primary table-striped table-sm">
+            <tbody>
+                <?php
+$sql = "SELECT * FROM `tb_train2` ORDER By `id` DESC LIMIT 10;";
+$result = mysqli_query($conn, $sql);
+while ($data = mysqli_fetch_assoc($result)) {
+ ?>
+                <tr>
+                    <td><a href="index.php?module=train&type=train2&id=<?=$data["id"];?>" target="_blank">
+                            <?=$data["tName"];?></a></td>
+                    <td><a href="index.php?module=profile&id=<?=$data["tid"];?>"
+                            target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
+                </tr>
+                <?php }?>
+            </tbody>
+        </table>
+        <div class="text-end mb-5">
+            <a href="index.php?module=list&mode=train2" type="button" class="btn btn-danger text-white fs-6">
+                <i class="fas fa-bullhorn"></i> ดูทั้งหมด</a>
+        </div>
+    </div>
+</div>
 <script>
 const aLabels = <?=json_encode($aLabels, JSON_UNESCAPED_UNICODE);?>;
 const aData = <?=json_encode($aData);?>;

@@ -9,12 +9,12 @@ if (!defined("KRITSADAPONG")) {
 <div class="row mb-3">
     <div class="col-6 col-md-3">
         <div class="card">
-            <div class="card-body text-center" style="background-color:Lightgreen;font-color:#9efd9e;">
+            <div class="card-body text-center" style="background-color:Lightgreen;color:#274e13;">
                 <h6 class="card-title">จำนวนหนังสือเข้า</h6>
                 <p class="card-text fw-bold" style="font-size:2rem;">
                     <?php
 $result = mysqli_query($conn, "SELECT COUNT(*) FROM `tb_book`");
-$cnt    = mysqli_fetch_array($result)[0];
+$cnt = mysqli_fetch_array($result)[0];
 echo $cnt;
 ?>
                 </p>
@@ -28,7 +28,7 @@ echo $cnt;
                 <p class="card-text fw-bold" style="font-size:2rem;">
                     <?php
 $result = mysqli_query($conn, "SELECT COUNT(*) FROM `tb_newbook`");
-$cnt    = mysqli_fetch_array($result)[0];
+$cnt = mysqli_fetch_array($result)[0];
 echo $cnt;
 ?>
                 </p>
@@ -42,7 +42,7 @@ echo $cnt;
                 <p class="card-text fw-bold" style="font-size:2rem;">
                     <?php
 $result = mysqli_query($conn, "SELECT COUNT(*) FROM `tb_project`");
-$cnt    = mysqli_fetch_array($result)[0];
+$cnt = mysqli_fetch_array($result)[0];
 echo $cnt;
 ?>
                 </p>
@@ -56,7 +56,7 @@ echo $cnt;
                 <p class="card-text fw-bold" style="font-size:2rem;">
                     <?php
 $result = mysqli_query($conn, "SELECT COUNT(*) FROM `urls`");
-$cnt    = mysqli_fetch_array($result)[0];
+$cnt = mysqli_fetch_array($result)[0];
 echo $cnt;
 ?>
                 </p>
@@ -88,7 +88,7 @@ echo $cnt;
     <tbody>
         <?php
 
-$sql    = "SELECT * FROM `tb_book` ORDER BY `id` DESC LIMIT 5";
+$sql = "SELECT * FROM `tb_book` ORDER BY `id` DESC LIMIT 5";
 $result = mysqli_query($conn, $sql);
 while ($data = mysqli_fetch_array($result)) {
  extract($data);
@@ -129,7 +129,7 @@ while ($data = mysqli_fetch_array($result)) {
     <tbody>
         <?php
 
-$sql    = "SELECT * FROM `tb_newbook` ORDER BY `id` DESC LIMIT 5";
+$sql = "SELECT * FROM `tb_newbook` ORDER BY `id` DESC LIMIT 5";
 $result = mysqli_query($conn, $sql);
 while ($data = mysqli_fetch_array($result)) {
  extract($data);
@@ -167,7 +167,7 @@ while ($data = mysqli_fetch_array($result)) {
     <tbody>
         <?php
 
-$sql    = "SELECT * FROM `tb_project` ORDER BY `id` DESC LIMIT 5";
+$sql = "SELECT * FROM `tb_project` ORDER BY `id` DESC LIMIT 5";
 $result = mysqli_query($conn, $sql);
 while ($data = mysqli_fetch_array($result)) {
  extract($data);
@@ -194,7 +194,7 @@ while ($data = mysqli_fetch_array($result)) {
 </div>
 <?php
 
-$sql    = "SELECT * FROM `urls` ORDER BY `urls`.`url_id` DESC LIMIT 5";
+$sql = "SELECT * FROM `urls` ORDER BY `urls`.`url_id` DESC LIMIT 5";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) >= 1) {
  ?>
@@ -210,11 +210,11 @@ if (mysqli_num_rows($result) >= 1) {
     </thead>
     <tbody>
         <?php
-$url = "http://spmnan.ga/";
+$url = "https://spmnan.ga/";
  while ($data = mysqli_fetch_array($result)) {
   $url_id = $data["url_id"];
-  $surl   = $data["surl"];
-  $gurl   = $data["gurl"];
+  $surl = $data["surl"];
+  $gurl = $data["gurl"];
   ?>
         <tr>
             <td><?=htmlspecialchars_decode($data["name"]);?></td>

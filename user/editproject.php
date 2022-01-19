@@ -8,10 +8,10 @@ if (isset($_POST["pName"])) {
  extract($_POST);
  $sql = "UPDATE `tb_project` SET `pname` = '$pName',`budget` ='$budget',`myear` ='$mYear',`person`='$person' WHERE `id`='$id'";
  mysqli_query($conn, $sql);
- $school   = $_POST["school"];
- $sql      = "SELECT `scid` FROM `tb_uproject` WHERE `pid`=$id";
- $result   = mysqli_query($conn, $sql);
- $data     = mysqli_fetch_all($result, MYSQLI_ASSOC);
+ $school = $_POST["school"];
+ $sql = "SELECT `scid` FROM `tb_uproject` WHERE `pid`=$id";
+ $result = mysqli_query($conn, $sql);
+ $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
  $selected = array();
  foreach ($data as $key2 => $value2) {
   array_push($selected, $value2["scid"]);
@@ -26,7 +26,7 @@ if (isset($_POST["pName"])) {
   mysqli_query($conn, $sql);
  }
  //var_dump($del);
- $sql    = "SELECT `id`,`name` FROM `tb_school`";
+ $sql = "SELECT `id`,`name` FROM `tb_school` WHERE `id`!=99";
  $result = mysqli_query($conn, $sql);
  while ($row = mysqli_fetch_assoc($result)) {
   $scname[$row["id"]] = $row["name"];
@@ -48,9 +48,9 @@ if (!defined("KRITSADAPONG")) {
 }
 $id = $_GET["id"];
 
-$sql    = "SELECT * FROM `tb_project` WHERE `id`='$id'";
+$sql = "SELECT * FROM `tb_project` WHERE `id`='$id'";
 $result = mysqli_query($conn, $sql);
-$data   = mysqli_fetch_array($result);
+$data = mysqli_fetch_array($result);
 extract($data, EXTR_PREFIX_SAME, "b");
 
 ?>
@@ -109,15 +109,15 @@ for ($i = 0; $i < $no; $i++) {
                     data-placeholder="เลือกโรงเรียนที่เข้าร่วมโครงการ">
                     <option></option>
                     <?php
-$sql      = "SELECT `scid` FROM `tb_uproject` WHERE `pid`=$id";
-$result   = mysqli_query($conn, $sql);
-$data     = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$sql = "SELECT `scid` FROM `tb_uproject` WHERE `pid`=$id";
+$result = mysqli_query($conn, $sql);
+$data = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $selected = array();
 foreach ($data as $key2 => $value2) {
  array_push($selected, $value2["scid"]);
 }
 
-$sql    = "SELECT `id`,`name` FROM `tb_school`";
+$sql = "SELECT `id`,`name` FROM `tb_school` WHERE `id`!=99";
 $result = mysqli_query($conn, $sql);
 $school = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

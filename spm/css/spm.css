@@ -1,0 +1,132 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	font-size: 0.7rem;
+}
+
+/* https://charliepark.org/bootstrap_buttons/ */
+
+.btn-nan1 {
+	background-color: hsl(271, 100%, 26%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a13dff", endColorstr="#440084");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#a13dff), to(#440084));
+	background-image: -moz-linear-gradient(top, #a13dff, #440084);
+	background-image: -ms-linear-gradient(top, #a13dff, #440084);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a13dff), color-stop(100%, #440084));
+	background-image: -webkit-linear-gradient(top, #a13dff, #440084);
+	background-image: -o-linear-gradient(top, #a13dff, #440084);
+	background-image: linear-gradient(#a13dff, #440084);
+	border-color: #440084 #440084 hsl(271, 100%, 17%);
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.59);
+	-webkit-font-smoothing: antialiased;
+}
+
+.btn-nan2 {
+	background-color: hsl(0, 69%, 22%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#b42121), to(#5e1111));
+	background-image: -moz-linear-gradient(top, #b42121, #5e1111);
+	background-image: -ms-linear-gradient(top, #b42121, #5e1111);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b42121), color-stop(100%, #5e1111));
+	background-image: -webkit-linear-gradient(top, #b42121, #5e1111);
+	background-image: -o-linear-gradient(top, #b42121, #5e1111);
+	background-image: linear-gradient(#b42121, #5e1111);
+	border-color: #5e1111 #5e1111 hsl(0, 69%, 17%);
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+	-webkit-font-smoothing: antialiased;
+}
+
+.btn-nan3 {
+	background-color: hsl(201, 100%, 30%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00a5ff", endColorstr="#006399");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#00a5ff), to(#006399));
+	background-image: -moz-linear-gradient(top, #00a5ff, #006399);
+	background-image: -ms-linear-gradient(top, #00a5ff, #006399);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00a5ff), color-stop(100%, #006399));
+	background-image: -webkit-linear-gradient(top, #00a5ff, #006399);
+	background-image: -o-linear-gradient(top, #00a5ff, #006399);
+	background-image: linear-gradient(#00a5ff, #006399);
+	border-color: #006399 #006399 hsl(201, 100%, 25%);
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+	-webkit-font-smoothing: antialiased;
+}
+
+.btn-nan4 {
+	background-color: hsl(115, 100%, 18%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#12e000", endColorstr="#075b00");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#12e000), to(#075b00));
+	background-image: -moz-linear-gradient(top, #12e000, #075b00);
+	background-image: -ms-linear-gradient(top, #12e000, #075b00);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #12e000), color-stop(100%, #075b00));
+	background-image: -webkit-linear-gradient(top, #12e000, #075b00);
+	background-image: -o-linear-gradient(top, #12e000, #075b00);
+	background-image: linear-gradient(#12e000, #075b00);
+	border-color: #075b00 #075b00 hsl(115, 100%, 11.5%);
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.42);
+	-webkit-font-smoothing: antialiased;
+}
+
+.editable {
+	/* text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: red;*/
+	cursor: pointer;
+}
+
+.editable:after {
+	font-size: 0.5rem;
+	/*content: "\f304";*/
+	content: "\f044";
+	font-family: "Font Awesome 5 Free";
+	font-weight: normal;
+	font-style: normal;
+	margin-left: 2px;
+	font-weight: 900;
+	text-decoration: none !important;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	color: red;
+}
+
+table {
+	font-size: 0.6rem;
+}
+
+table a {
+	color: rgb(5, 68, 68);
+	text-decoration: none;
+}
+
+table a:hover {
+	font-weight: 600;
+}
+
+table > tbody > tr > td:first-child a:after {
+	font-size: 0.5rem;
+	/*content: "\f304";*/
+	content: "\f0c1";
+	font-family: "Font Awesome 5 Free";
+	font-weight: normal;
+	font-style: normal;
+	margin-left: 2px;
+	font-weight: 900;
+	text-decoration: none !important;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+}

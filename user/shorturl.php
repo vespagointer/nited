@@ -1,5 +1,5 @@
 <?php
-$url = "http://spmnan.ga/";
+$url = "https://spmnan.ga/";
 ?>
 <div class="d-flex justify-content-center">
     <h3>สร้าง Short URLs</h3>

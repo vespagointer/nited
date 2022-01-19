@@ -8,7 +8,7 @@ if (@$_POST["key"] != null && (@$_POST["key"] != "all")) {
  $key = mysqli_real_escape_string($conn, $_POST["key"]);
  $sql = "SELECT * FROM `tb_school` WHERE `area`='$key'";
 } else {
- $sql = "SELECT * FROM `tb_school`";
+ $sql = "SELECT * FROM `tb_school` WHERE `id`<31";
 }
 $result = mysqli_query($conn, $sql);
 ?>

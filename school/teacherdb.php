@@ -5,10 +5,11 @@ if ($_SESSION["ss_status"] != "school") {
 }
 define("KRITSADAPONG", true);
 require_once "../conn.php";
+$id = $_SESSION["ss_id"];
+$scid = $_SESSION["ss_id"];
+$id10 = $_SESSION["ss_id10"];
 
 if (isset($_POST["cid"])) {
- $id = $_SESSION["ss_id"];
- $id10 = $_SESSION["ss_id10"];
  extract($_POST);
  @$sql = "SELECT `id` FROM `tb_teacher` WHERE `cid`=$cid";
  $result = mysqli_query($conn, $sql);
@@ -27,13 +28,25 @@ if (isset($_POST["cid"])) {
 
 if (@$_GET["do"] == "move") {
  @$id = $_GET["id"];
- $sql = "UPDATE `tb_teacher` SET `sc_id` = 0,`sc_id10` = 0 WHERE `id`=$id";
+ $sql = "UPDATE `tb_teacher` SET `sc_id` = 0,`sc_id10` =0  WHERE `id`=$id";
  if (mysqli_query($conn, $sql)) {
   die("OK");
  } else {
   die(mysqli_error($conn));
  }
 //echo $id;*/
+ // echo "OK";
+}
+
+if (@$_GET["do"] == "in") {
+ @$id = $_GET["id"];
+ $sql = "UPDATE `tb_teacher` SET `sc_id` = $scid,`sc_id10` = $id10 WHERE `id`=$id";
+ if (mysqli_query($conn, $sql)) {
+  die("OK");
+ } else {
+  die(mysqli_error($conn));
+ }
+ //echo $id;*/
  // echo "OK";
 }
 

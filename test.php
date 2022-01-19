@@ -1,30 +1,8 @@
-<!DOCTYPE html>
-<html lang="th">
+<?php
+$thai = array("๐", "๑", "๒", "๓", "๔", "๕", "๖", "๗", "๘", "๙");
+$arabic = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="js/ckeditor.js"></script>
-</head>
+$text = "formonet๖๔";
+$text = str_replace($thai, $arabic, $text);
 
-<body>
-    <textarea name="profile" id="profile" cols="30" rows="10"></textarea>
-
-
-
-    <script>
-    ClassicEditor
-        .create(document.querySelector('#profile'), {
-            ckfinder: {
-                uploadUrl: 'ckupload.php'
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    </script>
-</body>
-
-</html>
+echo $text;

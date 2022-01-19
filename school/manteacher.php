@@ -8,7 +8,7 @@ if ($do == "add") { //add
         <h6>เพิ่มครู</h6>
     </div>
     <div class="row mx-auto">
-        <form action="teacherdb.php" method="POST" id="myForm" class="needs-validation" novalidate>
+        <form action="teacherdb.php" method="POST" id="myForm">
             <div class="mb-3">
                 <label for="name" class="form-label">ชื่อ - สกุล</label>
                 <input type="text" class="form-control" name="name" id="name"

@@ -7,7 +7,11 @@ $sql = "SELECT * FROM `tb_scpr` WHERE `id`=$id";
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
 extract($data);
-$school = LinkSchool($conn, $sc_id);
+if ($sc_id = 99) {
+ $school = LinkSchool2($conn, $sc_id);
+} else {
+ $school = LinkSchool($conn, $sc_id);
+}
 if ($id == 0) {
  $school = "ตัวอย่างพิทยาคม";
  $name = "ข่าวประชาสัมพันธ์ ตัวอย่าง";
@@ -16,7 +20,7 @@ if ($id == 0) {
 }
 ?>
 <div class="col-12">
-    <h5 class="mt-4 mb-3 fw-bold"><?=$name;?></h5>
+    <h5 class="mt-4 mb-3 fw-bold text-center"><?=$name;?></h5>
     <div class="col-12 mx-1 ck-content mb-3">
         <?=$content;?>
     </div>

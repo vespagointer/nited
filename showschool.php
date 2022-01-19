@@ -1,4 +1,5 @@
 <?php
+require_once "db.php";
 $scid = $_GET["id"];
 $sql = "SELECT * FROM `tb_school` WHERE `id`=$scid";
 $result = mysqli_query($conn, $sql);
@@ -81,9 +82,15 @@ extract($data);
                 <th scope="row" class="fit">จำนวนนักเรียน</th>
                 <td><?=$student;?></td>
             </tr>
+            <tr>
+                <th scope="row" class="fit">ข้อมูลครู</th>
+                <td> <a href="index.php?module=teacherlist&scid=<?=$scid;?>">คลิ๊กที่นี่</a> </td>
+            </tr>
         </tbody>
     </table>
-
+    <?php
+include_once "stat.php";
+?>
 </div>
 <div class=" alert alert-success text-center my-3 fs-6 fw-bold">
     โครงการ
@@ -110,15 +117,17 @@ if (mysqli_num_rows($result) > 0) {
   $i++;
  }
 }
-@$pID = array_diff($pID, $scpid);
-@$pID = array_values($pID);
+if (isset($scpid)) {
+ @$pID = @array_diff($pID, $scpid);
+ @$pID = @array_values($pID);
+}
 ?>
 
 <div class="card mb-3">
     <div class="card-title mt-2 fs-6 fw-bold ps-2">โครงการที่โรงเรียนเข้าร่วม</div>
     <div class="mx-3 mb-4 card-body">
         <?php
-if (@count($scpid) > 0) {
+if (isset($scpid)) {
  echo "<ol>";
  foreach ($scpid as $key => $id) {
   echo "<li>";
@@ -232,7 +241,7 @@ while ($data = @mysqli_fetch_assoc($result)) {
         <tr>
             <td scope="row" class="text-center"><?=$nost;?></td>
             <td><a href="index.php?module=news&id=<?=$id;?>" target="_blank"><?=$name;?></a></td>
-            <td><?=$date;?></td>
+            <td><?=renderDate2($date);?></td>
         </tr>
         <?php
 
@@ -266,7 +275,7 @@ while ($data = @mysqli_fetch_assoc($result)) {
         <tr>
             <td scope="row" class="text-center"><?=$nost;?></td>
             <td><a href="../index.php?module=gallery&id=<?=$id;?>" target="_blank"><?=$name;?></a></td>
-            <td><?=$date;?></td>
+            <td><?=renderDate2($date);?></td>
         </tr>
         <?php $nost--;}?>
     </tbody>

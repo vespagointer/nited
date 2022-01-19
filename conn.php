@@ -1,6 +1,6 @@
 <?php
 //define("KRITSADAPONG", true);
-define("__FFF___", "tel:0831618072");
+define("__FFF___", "https://nited.spmnan.go.th/index.php?module=profile&id=17");
 if (!defined("KRITSADAPONG")) {
 //die("Access Denied!");
  @header("location:404.php");

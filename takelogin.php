@@ -24,6 +24,7 @@ if (mysqli_num_rows($result) >= 1) {
  if (mysqli_num_rows($result) >= 1) {
   $data = mysqli_fetch_array($result);
   $_SESSION["ss_id"] = $data["id"];
+  $_SESSION["ss_id10"] = $data["id10"];
   $_SESSION["ss_status"] = "school";
   $_SESSION["ss_name"] = $data["name"];
   $_SESSION["ss_surname"] = "";
@@ -41,7 +42,19 @@ if (mysqli_num_rows($result) >= 1) {
    $_SESSION["logined"] = true;
    echo "teacher";
   } else {
-   echo "FAIL";
+   $sql = "SELECT * FROM `tb_spmnan`WHERE `username`='$uname' AND `password`='$upass'";
+   $result = mysqli_query($conn, $sql);
+   if (mysqli_num_rows($result) >= 1) {
+    $data = mysqli_fetch_array($result);
+    $_SESSION["ss_id"] = $data["id"];
+    $_SESSION["ss_status"] = "spm";
+    $_SESSION["ss_name"] = $data["name"];
+    $_SESSION["ss_surname"] = "";
+    $_SESSION["logined"] = true;
+    echo "spm";
+   } else {
+    echo "FAIL";
+   }
   }
  }
 }

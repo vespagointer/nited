@@ -1,12 +1,12 @@
 <?php
 @define("KRITSADAPONG", true);
 require_once "../conn.php";
-$url = "http://spmnan.ga/";
+$url = "https://spmnan.ga/";
 
 if (!isset($limit)) {
  $limit = 20;
 }
-$sql    = "SELECT * FROM `urls` ORDER BY `urls`.`url_id` DESC LIMIT $limit";
+$sql = "SELECT * FROM `urls` ORDER BY `urls`.`url_id` DESC LIMIT $limit";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) >= 1) {
  ?>
@@ -28,8 +28,8 @@ if (mysqli_num_rows($result) >= 1) {
         <?php
 while ($data = mysqli_fetch_array($result)) {
   $url_id = $data["url_id"];
-  $surl   = $data["surl"];
-  $gurl   = $data["gurl"];
+  $surl = $data["surl"];
+  $gurl = $data["gurl"];
   ?>
         <tr>
             <td><?=htmlspecialchars_decode($data["name"]);?></td>

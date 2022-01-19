@@ -55,7 +55,7 @@ for ($i = 0; $i < $no; $i++) {
                     <option></option>
                     <?php
 
-$sql    = "SELECT `id`,`name` FROM `tb_school`";
+$sql = "SELECT `id`,`name` FROM `tb_school` WHERE `id`!=99";
 $result = mysqli_query($conn, $sql);
 while ($school = mysqli_fetch_assoc($result)) {
  echo "<option value='" . $school["id"] . "'>" . $school["name"] . "</option>";

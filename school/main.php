@@ -8,7 +8,7 @@ $_SESSION["ss_id10"] = $id10;
 ?>
 <div class="toast text-white bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
-        <div class="toast-body" style="font-size:0.5rem">
+        <div class="toast-body" style="font-size:0.8rem">
             Tips: ข้อความที่มี <i class="far fa-edit"></i> ต่อท้าย สามารถ ดับเบิ้ลคลิ๊กเพื่อแก้ไขข้อความได้
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto btn-sm" data-bs-dismiss="toast"
