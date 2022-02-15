@@ -141,6 +141,12 @@ require_once "../db.php";
                     <li><a href="index.php?module=publish">
                             <i class="far fa-comment-dots"></i> เผยแพร่ผลงาน</a>
                     </li>
+                    <li><a href="index.php?module=scout">
+                            <i class="fas fa-campground"></i> เอกสารทางลูกเสือ</a>
+                    </li>
+                    <li><a href="index.php?module=redcross">
+                            <i class="fas fa-hand-holding-medical"></i> เอกสารทางยุวกาชาด</a>
+                    </li>
                     <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a></li>
                 </ul>
                 <ul class="list-unstyled components">

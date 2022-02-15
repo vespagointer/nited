@@ -58,7 +58,7 @@ for ($id = 1; $id <= 30; $id++) {
  $result = mysqli_query($conn, $sql);
  $cnt_exproject = mysqli_fetch_row($result)[0];
 
- $sumproject = $cnt_project + $cnt_scproject + $cnt_exproject;
+ $sumproject = $cnt_project + $cnt_exproject; //+ $cnt_scproject;
  upstat($conn, "project", $sumproject, $id);
 
  $sql = "SELECT count(`id`) FROM `tb_scaward` WHERE `sc_id`=$id";
@@ -76,7 +76,7 @@ for ($id = 1; $id <= 30; $id++) {
  $cnt_gallery = mysqli_fetch_row($result)[0];
  upstat($conn, "gallery", $cnt_gallery, $id);
 
- $sql = "SELECT count(`id`) FROM `tb_teacher` WHERE `sc_id`=$id";
+ $sql = "SELECT count(`id`) FROM `tb_teacher` WHERE `sc_id`=$id  AND `dep`!=11";
  $result = mysqli_query($conn, $sql);
  $cnt_teacher = mysqli_fetch_row($result)[0];
  upstat($conn, "teacher", $cnt_teacher, $id);

@@ -5,6 +5,11 @@ $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
 extract($data);
 $_SESSION["ss_id10"] = $id10;
+
+$imgPro = "../pictures/logo/" . $id . ".png";
+if (!file_exists($imgPro)) {
+ $imgPro = "../img/spmnan_logo.png";
+}
 ?>
 <div class="toast text-white bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
@@ -20,6 +25,12 @@ $_SESSION["ss_id10"] = $id10;
     <div class=" alert alert-success text-center my-3 fs-6 fw-bold">
         โรงเรียน<?=$name;?>
     </div>
+
+    <div class="text-center my-3">
+        <img src="<?=$imgPro;?>" style="height:200px;" id="imgProfile">
+        <div class="text-center text-muted mt-1">ดับเบิ้ลคลิกที่รูป เพื่อเปลี่ยนรูป<br />เฉพาะไฟล์ PNG เท่านั้น</div>
+    </div>
+
     <table class="table table-striped">
         <tbody>
             <tr>
@@ -102,6 +113,23 @@ $_SESSION["ss_id10"] = $id10;
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel">ยกเลิก</button>
                 <button type="button" class="btn btn-primary" id="save">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fs-6" tabindex="-1" id="upimg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="p-2 fw-bold">อัพโหลดรูปภาพ</div>
+            <div class="modal-body text-center"><input type="file" name="image" id="image" class="visually-hidden"
+                    accept="image/png" /><button type="button" class="btn btn-primary btn-sm w-50 mb-3"
+                    id="btnbrows">เลือกรูป</button><br />
+                <img id="imgview" style="max-width: 80%" class="img-thumbnail rounded mb-3" />
+                <div class="modal-footer"><button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">ยกเลิก</button><button type="button" class="btn btn-primary"
+                        id="addImage">บันทึก</button></div>
             </div>
         </div>
     </div>

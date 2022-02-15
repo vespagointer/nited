@@ -7,7 +7,7 @@ $sql = "SELECT * FROM `tb_scpr` WHERE `id`=$id";
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
 extract($data);
-if ($sc_id = 99) {
+if ($sc_id == 99) {
  $school = LinkSchool2($conn, $sc_id);
 } else {
  $school = LinkSchool($conn, $sc_id);

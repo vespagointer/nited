@@ -16,21 +16,21 @@ table.dataTable.display tbody tr.odd {
 
 $mode = $_GET["mode"];
 if ($mode == "scpr") {
- if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
-  $scid = $_GET["scid"];
-  $sql = "SELECT * FROM `tb_scpr` WHERE `sc_id`=$scid ORDER BY `id` ASC";
- } else {
-  $sql = "SELECT * FROM `tb_scpr` ORDER BY `id` ASC";
- }
- $result = mysqli_query($conn, $sql);
- ?>
+    if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
+        $scid = $_GET["scid"];
+        $sql = "SELECT * FROM `tb_scpr` WHERE `sc_id`=$scid ORDER BY `id` ASC";
+    } else {
+        $sql = "SELECT * FROM `tb_scpr` ORDER BY `id` ASC";
+    }
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>ข่าวประชาสัมพันธ์</h3>
         <?php
 if (isset($scid)) {
-  echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
- }
- ?>
+        echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="scpr" style="width:100%">
         <thead>
@@ -44,9 +44,9 @@ if (isset($scid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
+    while ($data = mysqli_fetch_assoc($result)):
 
- ?>
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=news&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a></td>
@@ -55,29 +55,29 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
 }
 
 if ($mode == "gallery") {
- if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
-  $scid = $_GET["scid"];
-  $sql = "SELECT * FROM `tb_gallery` WHERE `sc_id`=$scid ORDER BY `id` ASC";
- } else {
-  $sql = "SELECT * FROM `tb_gallery` ORDER BY `id` ASC";
- }
- $result = mysqli_query($conn, $sql);
- ?>
+    if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
+        $scid = $_GET["scid"];
+        $sql = "SELECT * FROM `tb_gallery` WHERE `sc_id`=$scid ORDER BY `id` ASC";
+    } else {
+        $sql = "SELECT * FROM `tb_gallery` ORDER BY `id` ASC";
+    }
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>ภาพกิจกรรม</h3>
         <?php
 if (isset($scid)) {
-  echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
- }
- ?>
+        echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="gallery" style="width:100%">
         <thead>
@@ -91,41 +91,41 @@ if (isset($scid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
+    while ($data = mysqli_fetch_assoc($result)):
 
- ?>
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=gallery&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a></td>
                 <td><?=LinkSchool($conn, $data["sc_id"]);?></td>
-                <td><?=renderDate3($data["date"]);?></td>
+                <td><?=renderDate($data["date"]);?></td>
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
 }
 
 if ($mode == "scaward") {
- if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
-  $scid = $_GET["scid"];
-  $sql = "SELECT * FROM `tb_scaward` WHERE `sc_id`=$scid ORDER BY `id` ASC";
- } else {
-  $sql = "SELECT * FROM `tb_scaward` ORDER BY `id` ASC";
- }
+    if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
+        $scid = $_GET["scid"];
+        $sql = "SELECT * FROM `tb_scaward` WHERE `sc_id`=$scid ORDER BY `id` ASC";
+    } else {
+        $sql = "SELECT * FROM `tb_scaward` ORDER BY `id` ASC";
+    }
 
- $result = mysqli_query($conn, $sql);
- ?>
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>รางวัลที่โรงเรียนได้รับ</h3>
         <?php
 if (isset($scid)) {
-  echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
- }
- ?>
+        echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="scaward" style="width:100%">
         <thead>
@@ -139,9 +139,9 @@ if (isset($scid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
+    while ($data = mysqli_fetch_assoc($result)):
 
- ?>
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=award&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a></td>
@@ -150,30 +150,30 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
 }
 
 if ($mode == "taward") {
- if (isset($_GET["tid"]) and (int) $_GET["tid"] != 0) {
-  $tid = $_GET["tid"];
-  $sql = "(SELECT * FROM `tb_taward_school` WHERE `tid`=$tid LIMIT 1000) UNION (SELECT * FROM `tb_taward_self` WHERE `tid`=$tid LIMIT 1000) UNION (SELECT * FROM `tb_taward_student` WHERE `tid`=$tid LIMIT 1000) ORDER By `adate` ASC ;";
- } else {
-  $sql = "(SELECT * FROM `tb_taward_school` LIMIT 2000) UNION (SELECT * FROM `tb_taward_self`LIMIT 2000) UNION (SELECT * FROM `tb_taward_student` LIMIT 2000) ORDER By `adate` ASC;";
- }
+    if (isset($_GET["tid"]) and (int) $_GET["tid"] != 0) {
+        $tid = $_GET["tid"];
+        $sql = "(SELECT * FROM `tb_taward_school` WHERE `tid`=$tid LIMIT 1000) UNION (SELECT * FROM `tb_taward_self` WHERE `tid`=$tid LIMIT 1000) UNION (SELECT * FROM `tb_taward_student` WHERE `tid`=$tid LIMIT 1000) ORDER By `adate` ASC ;";
+    } else {
+        $sql = "(SELECT * FROM `tb_taward_school` LIMIT 2000) UNION (SELECT * FROM `tb_taward_self`LIMIT 2000) UNION (SELECT * FROM `tb_taward_student` LIMIT 2000) ORDER By `adate` ASC;";
+    }
 
- $result = mysqli_query($conn, $sql);
- ?>
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>รางวัลที่ครูได้รับ</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="taward" style="width:100%">
         <thead>
@@ -189,18 +189,18 @@ if (isset($tid)) {
         <tbody>
             <?php
 $atype = array(
-  "self" => "รางวัลด้านการพัฒนาตนเอง",
-  "school" => "รางวัลด้านการพัฒนาโรงเรียน",
-  "student" => "รางวัลด้านการพัฒนานักเรียน",
- );
+        "self" => "รางวัลด้านการพัฒนาตนเอง",
+        "school" => "รางวัลด้านการพัฒนาโรงเรียน",
+        "student" => "รางวัลด้านการพัฒนานักเรียน",
+    );
 
- $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
-  $type = explode("/", $data["adoc1"]);
-  if ($type[0] == "..") {
-   array_shift($type);
-  }
-  ?>
+    $i = 1;
+    while ($data = mysqli_fetch_assoc($result)):
+        $type = explode("/", $data["adoc1"]);
+        if ($type[0] == "..") {
+            array_shift($type);
+        }
+        ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=taward&atype=<?=$type[1];?>&id=<?=$data["id"];?>" target="_blank">
@@ -212,31 +212,31 @@ $atype = array(
                 <td><?=renderDate($data["adate"]);?></td>
             </tr>
             <?php
- $i++;
- endwhile;
- ?>
+    $i++;
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
 }
 
 if ($mode == "train1") {
- if (isset($_GET["tid"]) and (int) $_GET["tid"] != 0) {
-  $tid = $_GET["tid"];
-  $sql = "SELECT * FROM `tb_train1` WHERE `tid`=$tid ORDER By `tDateEn` ASC LIMIT 2000;";
- } else {
-  $sql = "SELECT * FROM `tb_train1` ORDER By `tDateEn` ASC LIMIT 2000;";
- }
+    if (isset($_GET["tid"]) and (int) $_GET["tid"] != 0) {
+        $tid = $_GET["tid"];
+        $sql = "SELECT * FROM `tb_train1` WHERE `tid`=$tid ORDER By `tDateEn` ASC LIMIT 2000;";
+    } else {
+        $sql = "SELECT * FROM `tb_train1` ORDER By `tDateEn` ASC LIMIT 2000;";
+    }
 
- $result = mysqli_query($conn, $sql);
- ?>
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>รายงานการอบรม/ประชุม/สัมนา</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="train" style="width:100%">
         <thead>
@@ -251,8 +251,8 @@ if (isset($tid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
- ?>
+    while ($data = mysqli_fetch_assoc($result)):
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=train&type=train1&id=<?=$data["id"];?>" target="_blank">
@@ -264,29 +264,29 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
 }
 
 if ($mode == "train2") {
- if (isset($_GET["tid"])) {
-  $tid = $_GET["tid"];
-  $sql = "SELECT * FROM `tb_train2` WHERE `tid`=$tid ORDER By `tDateEn` ASC;";
- } else {
-  $sql = "SELECT * FROM `tb_train2` ORDER By `tDateEn` ASC;";
- }
- $result = mysqli_query($conn, $sql);
- ?>
+    if (isset($_GET["tid"])) {
+        $tid = $_GET["tid"];
+        $sql = "SELECT * FROM `tb_train2` WHERE `tid`=$tid ORDER By `tDateEn` ASC;";
+    } else {
+        $sql = "SELECT * FROM `tb_train2` ORDER By `tDateEn` ASC;";
+    }
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>รายงานการพัฒนาตนเอง</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="train" style="width:100%">
         <thead>
@@ -301,8 +301,8 @@ if (isset($tid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
- ?>
+    while ($data = mysqli_fetch_assoc($result)):
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=train&type=train2&id=<?=$data["id"];?>" target="_blank">
@@ -314,30 +314,30 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
 }
 
 if ($mode == "publish") {
- if (isset($_GET["tid"])) {
-  $tid = $_GET["tid"];
-  $sql = "SELECT * FROM `tb_tpublish` WHERE `tid`=$tid ORDER By `id` ASC;";
- } else {
-  $sql = "SELECT * FROM `tb_tpublish` ORDER By `id` ASC;";
- }
+    if (isset($_GET["tid"])) {
+        $tid = $_GET["tid"];
+        $sql = "SELECT * FROM `tb_tpublish` WHERE `tid`=$tid ORDER By `id` ASC;";
+    } else {
+        $sql = "SELECT * FROM `tb_tpublish` ORDER By `id` ASC;";
+    }
 
- $result = mysqli_query($conn, $sql);
- ?>
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>เผยแพร่ผลงาน</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="publish" style="width:100%">
         <thead>
@@ -351,8 +351,8 @@ if (isset($tid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
- ?>
+    while ($data = mysqli_fetch_assoc($result)):
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="<?=$data["link"];?>" target="_blank">
@@ -363,8 +363,8 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?php

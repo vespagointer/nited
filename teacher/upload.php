@@ -1,52 +1,26 @@
 <?php
-require_once "simpleimage.php";
-$base = "pictures";
-$y = date('Y') + 543;
-$m = date('m');
+session_start();
+$id = $_SESSION["ss_id"];
+require_once "../simpleimage.php";
+$base = "pictures" . DIRECTORY_SEPARATOR . "profile";
 
-$folder = $base . DIRECTORY_SEPARATOR . $y . DIRECTORY_SEPARATOR . $m;
-if (!@is_dir($base)) {
- $oldmask = umask(0);
- mkdir($base, 0777);
- umask($oldmask);
- fopen($base . DIRECTORY_SEPARATOR . "index.html", "w");
-}
-$sub = $base . DIRECTORY_SEPARATOR . $y;
-if (!@is_dir($sub)) {
- $oldmask = umask(0);
- mkdir($sub, 0777);
- umask($oldmask);
- fopen($sub . DIRECTORY_SEPARATOR . "index.html", "w");
-}
-
-if (!@is_dir($folder)) {
- $oldmask = umask(0);
- mkdir($folder, 0777);
- umask($oldmask);
- fopen($folder . DIRECTORY_SEPARATOR . "index.html", "w");
-}
-
-if (isset($_FILES["upload"])) {
- @$tmp_name = $_FILES["upload"]["tmp_name"];
- $filename = basename($_FILES["upload"]["name"]);
- $ext = pathinfo($filename, PATHINFO_EXTENSION);
- $x = time();
- $name = $folder . DIRECTORY_SEPARATOR . $x . "." . $ext;
+if (isset($_FILES["img"])) {
+ @$tmp_name = $_FILES["img"]["tmp_name"];
+ $filename = basename($_FILES["img"]["name"]);
+ //$ext = pathinfo($filename, PATHINFO_EXTENSION);
+ $name = ".." . DIRECTORY_SEPARATOR . $base . DIRECTORY_SEPARATOR . $id . ".jpg";
+ if (file_exists($name)) {
+  unlink($name);
+ }
  $image = new SimpleImage($tmp_name);
- $image->maxarea(1024);
+ //$image->maxarea(200);
+ $image->resizeToHeight(300);
  $image->save($name);
 
- //if (move_uploaded_file($tmp_name, $name)) {
- // $name = $base . "/" . $y . "/" . $m . "/" . $x . "." . $ext;$name
  if (file_exists($name)) {
   $name = str_replace("\\", "/", $name);
-  echo "{";
-  echo "\"uploaded\": true,";
-  echo "\"url\": \"../$name\"";
-  echo "}";
+  echo $name;
  } else {
-  echo "{";
-  echo "\"uploaded\": false";
-  echo "}";
+  echo "FAIL";
  }
 }

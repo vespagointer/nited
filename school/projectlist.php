@@ -49,6 +49,7 @@ if (@count($scpid) > 0) {
 ?>
     </div>
 </div>
+<!--
 <div class="card mb-3">
     <div class="card-title mt-2 fs-6 fw-bold ps-2">โครงการของโรงเรียน</div>
     <div class="mx-3 mb-4 card-body">
@@ -71,6 +72,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
     </div>
 </div>
+-->
 <div class="card mb-3">
     <div class="card-title mt-2 fs-6 fw-bold ps-2">โครงการของหน่วยงานอื่น</div>
     <div class="mx-3 mb-4 card-body">

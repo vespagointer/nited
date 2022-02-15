@@ -52,13 +52,10 @@ for ($i = 0; $i < $arrno; $i++) {
 
         <link href="css/theme.css" rel="stylesheet">
         <link href="css/bootstrap-datepicker.css" rel="stylesheet">
+        <link rel="stylesheet" href="DataTables/datatables.min.css">
         <?php
 if ($module == "gallery") {
  echo '<link rel="stylesheet" href="css/lightbox.css">';
-}
-
-if ($module == "teacherlist" || $module == "list" || $module == "spmlist") {
- echo '<link rel="stylesheet" href="DataTables/datatables.min.css">';
 }
 ?>
     </head>
@@ -104,7 +101,11 @@ if (empty($module)) {
         <script src="locales/bootstrap-datepicker.th.min.js"></script>
         <script src="js/bootstrap-datepicker-BE.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+        <script src="DataTables/datatables.min.js"></script>
         <script>
+        $(function() {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
         $(document).on('change', '#what', function(e) {
             var swhat = $(this).val();
             var input1 = '<input type="text" class="form-control-sm" name="key" required>\n';
@@ -142,10 +143,6 @@ if ($module == "gallery") {
  echo '<script src="js/lightbox.js"></script>';
 }
 
-if ($module == "teacherlist" || $module == "list" || $module == "spmlist") {
-
- echo '<script src="DataTables/datatables.min.js"></script>';
-}
 ?>
     </body>
 

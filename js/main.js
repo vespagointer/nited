@@ -54,7 +54,7 @@ function ChartPlugin(Title) {
 function ChartScales() {
 	var scales = {
 		x: {
-			display: false,
+			display: true,
 		},
 	};
 	return scales;

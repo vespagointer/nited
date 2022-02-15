@@ -91,7 +91,7 @@ for ($id = 1; $id <= 30; $id++) {
                 </a>
             </td>
             <td class="text-center"><?=getstat($conn, "all", $id);?></td>
-            <td class="text-center col-3">
+            <td class="text-center col-3" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=$per;?> %">
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped" role="progressbar"
                         style="width: <?=$per;?>%;font-size:0.5rem;background-color:var(<?=$cl;?>)"
@@ -108,3 +108,5 @@ for ($id = 1; $id <= 30; $id++) {
     </tbody>
 </table>
 <div class="text-muted text-center">*หมายเหตุ : ข้อมูลอัพเดททุกๆ ชั่วโมง</div>
+<div class="text-muted text-center">*หมายเหตุ<sup>2</sup> : บุคลากรที่อยู่ในกลุ่มสาระ อื่นๆ
+    จะไม่ถูกนำมาคิดร้อยละความก้าวหน้า</div>

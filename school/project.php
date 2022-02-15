@@ -1,34 +1,37 @@
 <?php
-$scid=$_SESSION["ss_id"];
-$sql="SELECT * FROM `tb_project`";
-$result=mysqli_query($conn,$sql);
-$i=0;
+$scid = $_SESSION["ss_id"];
+$sql = "SELECT * FROM `tb_project`";
+$result = mysqli_query($conn, $sql);
+$i = 0;
 while ($row = mysqli_fetch_assoc($result)) {
-    $pID[$i]=$row['id'];
-    $pName[$row["id"]] = $row["pname"];
-    $i++;
-   }
+ $pID[$i] = $row['id'];
+ $pName[$row["id"]] = $row["pname"];
+ $i++;
+}
 
-   $sql="SELECT `pid` FROM `tb_uproject` WHERE `scid`=$scid";
-   $result=mysqli_query($conn,$sql);
-   //$scpid=[];
-   $i=0;
-   if(mysqli_num_rows($result)>0){
-       while($data=mysqli_fetch_assoc($result)){
-           $scpid[$i]=$data["pid"];
-           $i++;
-       }
-   }
-   if(!isset($scpid))$scpid=[];
-    $pID=array_diff($pID,$scpid);
-    @$pID=array_values($pID);
-   ?>
+$sql = "SELECT `pid` FROM `tb_uproject` WHERE `scid`=$scid";
+$result = mysqli_query($conn, $sql);
+//$scpid=[];
+$i = 0;
+if (mysqli_num_rows($result) > 0) {
+ while ($data = mysqli_fetch_assoc($result)) {
+  $scpid[$i] = $data["pid"];
+  $i++;
+ }
+}
+if (!isset($scpid)) {
+ $scpid = [];
+}
+
+$pID = array_diff($pID, $scpid);
+@$pID = array_values($pID);
+?>
 
 <div class="col-md-8 offset-md-2">
     <div id="projectlist">
 
         <?php
-include_once("projectlist.php");
+include_once "projectlist.php";
 
 ?>
 
@@ -87,7 +90,7 @@ include_once("projectlist.php");
                         <label for="ptype" class="form-label">ประเภทของโครงการ <span class="text-muted"
                                 style="font-size:0.5rem">(ไม่บังคับให้กรอก)</span></label>
                         <select class="form-control" name="ptype" id="ptype">
-                            <option value="1">โครงการของโรงเรียน</option>
+                            <!--     <option value="1">โครงการของโรงเรียน</option> -->
                             <option value="2">โครงการของหน่วยงานอื่น</option>
                         </select>
                     </div>

@@ -4,6 +4,24 @@ if (!defined("KRITSADAPONG")) {
  @header("location:404.php");
  @die("Access Denied!");
 }
+$sql = "UPDATE `tb_teacher` SET  `tb_teacher`.`upd`=TRUE WHERE EXISTS (SELECT NULL FROM `tb_train1` WHERE `tb_teacher`.`id` = `tb_train1`.`tid`)";
+mysqli_query($conn, $sql);
+
+$sql = "UPDATE `tb_teacher` SET  `tb_teacher`.`upd`=TRUE WHERE EXISTS (SELECT NULL FROM `tb_train2` WHERE `tb_teacher`.`id` = `tb_train2`.`tid`)";
+mysqli_query($conn, $sql);
+
+$sql = "UPDATE `tb_teacher` SET  `tb_teacher`.`upd`=TRUE WHERE EXISTS (SELECT NULL FROM `tb_taward_student` WHERE `tb_teacher`.`id`  = `tb_taward_student`.`tid`)";
+mysqli_query($conn, $sql);
+
+$sql = "UPDATE `tb_teacher` SET  `tb_teacher`.`upd`=TRUE WHERE EXISTS (SELECT NULL FROM `tb_taward_self` WHERE `tb_teacher`.`id`  = `tb_taward_self`.`tid`)";
+mysqli_query($conn, $sql);
+
+$sql = "UPDATE `tb_teacher` SET  `tb_teacher`.`upd`=TRUE WHERE EXISTS (SELECT NULL FROM `tb_taward_student` WHERE `tb_teacher`.`id`  = `tb_taward_student`.`tid`)";
+mysqli_query($conn, $sql);
+
+$sql = "UPDATE `tb_teacher` SET  `tb_teacher`.`upd`=TRUE WHERE EXISTS (SELECT NULL FROM `tb_tpublish` WHERE `tb_teacher`.`id`  = `tb_tpublish`.`tid`)";
+mysqli_query($conn, $sql);
+
 $id = $_SESSION["ss_id"];
 $showNum = 20;
 $page = @$_GET["page"];
@@ -104,6 +122,7 @@ if (isset($_POST["key"])) {
             <th class="text-center">เบอร์โทร</th>
             <th class="text-center">อีเมล์</th>
             <th class="text-center">กลุ่มสาระฯ</th>
+            <th class="text-center">กรอกข้อมูล</th>
             <th class="text-center">จัดการ</th>
         </tr>
     </thead>
@@ -111,6 +130,11 @@ if (isset($_POST["key"])) {
         <?php
 while ($data = @mysqli_fetch_assoc($result)) {
  @extract($data);
+ if ($upd == true) {
+  $ck = '<i class="fas fa-check text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="กรอกข้อมูลแล้ว"></i>';
+ } else {
+  $ck = '<i class="far fa-times-circle text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="ยังไม่กรอกข้อมูล"></i>';
+ }
  ?>
         <tr>
             <td scope="row" class="text-center"><?=$nost;?></td>
@@ -119,6 +143,7 @@ while ($data = @mysqli_fetch_assoc($result)) {
             <td class="editable" data-id="<?=$id;?>" data-parm="tel"><?=$tel;?></td>
             <td class="editable" data-id="<?=$id;?>" data-parm="email"><?=$email;?></td>
             <td class="editable" data-id="<?=$id;?>" data-parm="dep"><?=$scdep[$dep];?></td>
+            <td class="text-center"><?=$ck;?></td>
             <td class="text-center">
                 |<a href="../index.php?module=profile&id=<?=$id;?>" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="ดูโปรไฟล์" target="_blank">

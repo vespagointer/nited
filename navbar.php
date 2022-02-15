@@ -32,6 +32,42 @@ if (!isset($page)) {
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        สหวิทยาเขต
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="index.php?module=campus">ภาพรวม</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=1">ข้อมูลสหวิทยาเขต เวียงปอ</a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=2">ข้อมูลสหวิทยาเขต
+                                เวียงภูเพียง</a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=3">ข้อมูลสหวิทยาเขต วรนคร</a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=4">ข้อมูลสหวิทยาเขต ศิลาทอง</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=1">ข้อมูลลูกเสือ เวียงปอ</a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=2">ข้อมูลลูกเสือ เวียงภูเพียง</a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=3">ข้อมูลลูกเสือ วรนคร</a>
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=4">ข้อมูลลูกเสือ ศิลาทอง</a>
+                        </li>
+                    </ul>
+
+                </li>
+
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">เครื่องมือ</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" style="font-size:0.75rem;"
@@ -50,6 +86,8 @@ if (!isset($page)) {
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" style="font-size:0.75rem;"
                                 href="index.php?module=report">รายงานรวม</a></li>
+                        <li><a class="dropdown-item" style="font-size:0.75rem;"
+                                href="index.php?module=scout">ข้อมูลลูกเสือ</a></li>
                         <li><a class="dropdown-item" style="font-size:0.75rem;"
                                 href="index.php?module=list&mode=scpr">ข่าวประชาสัมพันธ์จากโรงเรียน</a></li>
                         <li><a class="dropdown-item" style="font-size:0.75rem;"

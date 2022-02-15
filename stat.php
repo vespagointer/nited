@@ -76,7 +76,7 @@ $result = mysqli_query($conn, $sql);
 $cnt_gallery = mysqli_fetch_row($result)[0];
 upstat($conn, "gallery", $cnt_gallery, $id);
 
-$sql = "SELECT count(`id`) FROM `tb_teacher` WHERE `sc_id`=$id";
+$sql = "SELECT count(`id`) FROM `tb_teacher` WHERE `sc_id`=$id AND `dep`!=11";
 $result = mysqli_query($conn, $sql);
 $cnt_teacher = mysqli_fetch_row($result)[0];
 upstat($conn, "teacher", $cnt_teacher, $id);

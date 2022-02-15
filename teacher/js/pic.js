@@ -27,7 +27,7 @@ $(document).on("change", "#image", function () {
 $(document).on("click", "#addImage", function () {
 	var file_data = $("#image").prop("files")[0];
 	var form_data = new FormData();
-	form_data.append("file", file_data);
+	form_data.append("img", file_data);
 
 	$.ajax({
 		url: "upload.php", // point to server-side controller method
@@ -38,7 +38,12 @@ $(document).on("click", "#addImage", function () {
 		data: form_data,
 		type: "post",
 		success: function (response) {
-			$("#imgProfile").attr("src", "../" + response);
+			if (response == "FAIL") {
+				alert("ไม่สามารถบันทึกรูปได้ กรุณาลองอีกครั้ง");
+			} else {
+				$("#imgProfile").attr("src", response + "?" + new Date().getTime());
+				$("#upimg").modal("toggle");
+			}
 		},
 		error: function (response) {
 			$("#msg").html(response); // display error response from the server

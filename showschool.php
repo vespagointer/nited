@@ -1,6 +1,10 @@
 <?php
 require_once "db.php";
 $scid = $_GET["id"];
+$imgPro = "pictures/logo/" . $scid . ".png";
+if (!file_exists($imgPro)) {
+ $imgPro = "img/spmnan_logo.png";
+}
 $sql = "SELECT * FROM `tb_school` WHERE `id`=$scid";
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
@@ -19,6 +23,9 @@ extract($data);
 <div class="col-md-8 offset-md-2">
     <div class=" alert alert-success text-center my-3 fs-6 fw-bold">
         โรงเรียน<?=$name;?>
+    </div>
+    <div class="text-center my-3">
+        <img src="<?=$imgPro;?>" style="height:300px;" id="imgProfile">
     </div>
     <table class="table table-striped">
         <tbody>
@@ -86,6 +93,10 @@ extract($data);
                 <th scope="row" class="fit">ข้อมูลครู</th>
                 <td> <a href="index.php?module=teacherlist&scid=<?=$scid;?>">คลิ๊กที่นี่</a> </td>
             </tr>
+            <tr>
+                <th scope="row" class="fit">ขอมูลทางลูกเสือ</th>
+                <td> <a href="index.php?module=scout&scid=<?=$scid;?>">คลิ๊กที่นี่</a> </td>
+            </tr>
         </tbody>
     </table>
     <?php
@@ -142,6 +153,7 @@ if (isset($scpid)) {
 ?>
     </div>
 </div>
+<!--
 <div class="card mb-3">
     <div class="card-title mt-2 fs-6 fw-bold ps-2">โครงการของโรงเรียน</div>
     <div class="mx-3 mb-4 card-body">
@@ -163,6 +175,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
     </div>
 </div>
+-->
 <div class="card mb-3">
     <div class="card-title mt-2 fs-6 fw-bold ps-2">โครงการของหน่วยงานอื่น</div>
     <div class="mx-3 mb-4 card-body">

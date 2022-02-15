@@ -7,6 +7,11 @@ if (!defined("KRITSADAPONG")) {
 $tid = $_GET["id"];
 include_once "db.php";
 
+$imgPro = "pictures/profile/" . $tid . ".jpg";
+if (!file_exists($imgPro)) {
+ $imgPro = "images/profile.png";
+}
+
 $sql = "SELECT * FROM `tb_dep`";
 $result = mysqli_query($conn, $sql);
 $opt = "";
@@ -24,7 +29,9 @@ extract($data);
 <div class="bg-primary col-lg-9 mx-auto my-3 rounded text-center p-3">
     <h5 class=" fw-bold text-white">ข้อมูลส่วนตัว</h5>
 </div>
-
+<div class="text-center my-3">
+    <img src="<?=$imgPro;?>" class="img-thumbnail rounded" style="height:300px;" id="imgProfile">
+</div>
 <div class="row my-3 ">
     <div class="offset-lg-2 col-lg-8 bg-white p-3 rounded">
         <table class="table table-striped table-bordered">
@@ -78,6 +85,82 @@ if ($dep < 9):
                     </td>
                 </tr>
                 <?php endif;?>
+
+                <?php
+if ($psmt != ""):
+?>
+                <tr>
+                    <td>
+                        เป็นครูโครงการทุน :
+                    </td>
+                    <td><?=$psmt;?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <?=$psmt;?> รุ่นที่ :
+                    </td>
+                    <td><?=$psmtno;?>
+                    </td>
+                </tr>
+                <?php
+endif;
+?>
+
+                <tr>
+                    <td>
+                        วุฒิ ทางลูกเสือ :
+                    </td>
+                    <td> <?php
+if ($scout == "none") {
+ echo "ไม่มีวุฒิทางลูกเสือ";
+} else {
+ echo $scout;
+}
+?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        เอกสาร ทางลูกเสือ :
+                    </td>
+                    <td>
+                        <?php
+$sql = "SELECT * FROM `tb_scout`WHERE `tid`='$tid'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+ while ($data = mysqli_fetch_array($result)) {
+  extract($data);
+  echo "<li><a href='../scout/$year/$filename' target='_blank'>$name</a></li>";
+ }
+}
+?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        วุฒิ ยุวกาชาด :
+                    </td>
+                    <td><?=$redcross;?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        เอกสาร ยุวกาชาด :
+                    </td>
+                    <td>
+                        <?php
+$sql = "SELECT * FROM `tb_redcross`WHERE `tid`='$tid'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+ while ($data = mysqli_fetch_array($result)) {
+  extract($data);
+  echo "<li><a href='../redcross/$year/$filename' target='_blank'>$name</a></li>";
+ }
+}
+?>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         วุฒิ ปริญญาตรี :

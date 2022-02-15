@@ -10,7 +10,8 @@ if (!defined("KRITSADAPONG")) {
 $db_host = "119.59.100.49";
 $db_name = "spmnan_nited";
 $db_user = "nitedspmnan";
-$db_pwd = "J%63goe8";
+//$db_pwd = "J%63goe8";
+$db_pwd = "spmnan_2565";
 
 $adminID = 1;
 $anonID = 0;

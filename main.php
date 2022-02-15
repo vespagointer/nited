@@ -4,6 +4,7 @@ require_once "conn.php";
 require_once "db.php";
 
 $max = 5;
+$sName = ["ศ.ว.", "ศ.น.", "บส.ว", "น.อ.", "ม.ร.", "บ.ล.", "น.น.", "ปว.", "ศ.ศ.", "ม.ง.", "ม.ก.จ", "ท.พ.", "ส.ว.", "น.พ.", "ม.ว.", "ส.", "สธ.ร.", "ส.ท.พ.", "ท.ช.", "ช.ก.", "พ.พ.", "น.ม.", "ม.ล.", "ส.พ.ค.", "บ.ก.", "ต.ร.", "น.ค.", "ศ.น.น.", "ม.พ.", "น.ว."];
 
 $sql = "SELECT * FROM `tb_statistics` WHERE `name`='award'";
 $result = mysqli_query($conn, $sql);
@@ -17,7 +18,8 @@ arsort($data);
 if ($aCount > 0) {
  $count = 1;
  foreach ($data as $key => $val) {
-  $aLabels[] = getschool($conn, "name", substr($key, 2));
+  //$aLabels[] = getschool($conn, "name", substr($key, 2));
+  $aLabels[] = $sName[(substr($key, 2) - 1)];
   $aData[] = $val;
   if ($count == $max) {
    break;
@@ -40,7 +42,8 @@ arsort($data);
 if ($pCount > 0) {
  $count = 1;
  foreach ($data as $key => $val) {
-  $pLabels[] = getschool($conn, "name", substr($key, 2));
+  //$pLabels[] = getschool($conn, "name", substr($key, 2));
+  $pLabels[] = $sName[(substr($key, 2) - 1)];
   $pData[] = $val;
   if ($count == $max) {
    break;
@@ -99,40 +102,7 @@ while ($data = mysqli_fetch_assoc($result)):
             </div>
             <?php
 endwhile;
-if ($row == 0):
 ?>
-            <div class="center-cropped carousel-item active" style="background-image: url('example/1.jpg');">
-                <a href="index.php?module=gallery&id=0">
-                    <img src="example/1.jpg" alt="ตัวอย่าง" />
-                    <div class="carousel-caption d-none d-md-block ">
-                        <div class="myCaption">
-                            กีฑามัธยมน่าน 2565
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="center-cropped carousel-item" style="background-image: url('example/2.jpg');">
-                <a href="index.php?module=gallery&id=0">
-                    <img src="example/2.jpg" alt="ตัวอย่าง" />
-                    <div class="carousel-caption d-none d-md-block ">
-                        <div class="myCaption">
-                            ปฐมนิเทศก์ โรงเรียนสารทิศพิทยาคม
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="center-cropped carousel-item" style="background-image: url('example/3.jpg');">
-                <a href="index.php?module=gallery&id=0">
-                    <img src="example/3.jpg" alt="ตัวอย่าง" />
-                    <div class="carousel-caption d-none d-md-block ">
-                        <div class="myCaption">
-                            กีฑามัธยมน่าน 2561
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <?php endif;?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#NanGallery" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
