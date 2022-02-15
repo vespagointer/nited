@@ -13,9 +13,26 @@
 	"passphrase": null,
 	"agent": null,
 	"allow": [],
-	"ignore": ["\\.vscode", "\\.git", "\\.DS_Store"],
+	"ignore": [
+		"\\.vscode",
+		"\\.git",
+		"\\.DS_Store",
+		"pictures/",
+		"gallery/",
+		"files/",
+		"scafiles/",
+		"qrcode/",
+		"redcross/",
+		"scout/",
+		"taward/",
+		"train/"
+	],
 	"generatedFiles": {
-		"extensionsToInclude": [".php", ".js", ".css"],
+		"extensionsToInclude": [
+			".php",
+			".js",
+			".css"
+		],
 		"path": "./"
 	}
 }
