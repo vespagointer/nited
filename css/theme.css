@@ -9439,23 +9439,23 @@ tr.news {
     padding: 0.5rem;
 }
 
-tr.news.news1 {
+tr.news.news1,tr.news.news6 {
     background-color: #e17e76;
 }
 
-tr.news.news2 {
+tr.news.news2,tr.news.news7 {
     background-color: #e3baa8;
 }
 
-tr.news.news3 {
+tr.news.news3,tr.news.news8 {
     background-color: #aa7b6f;
 }
 
-tr.news.news4 {
+tr.news.news4,tr.news.news9 {
     background-color: #fed797;
 }
 
-tr.news.news5 {
+tr.news.news5,tr.news.news10 {
     background-color: #2e8364;
 }
 

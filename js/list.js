@@ -1,18 +1,9 @@
 $(document).ready(function () {
 	$("#scpr, #gallery, #scaward, #publish").DataTable({
 		order: [[0, "desc"]],
-		pageLength: 25,
-		language: {
-			url: "js/th.json",
-		},
-		dom: "lfrtip",
-	});
-
-	$("#taward,#train").DataTable({
-		order: [[0, "desc"]],
-		pageLength: 25,
+		pageLength: 50,
 		buttons: [
-			"searchBuilder",
+			//"searchBuilder",
 			"copy",
 			"excel",
 			{
@@ -26,6 +17,28 @@ $(document).ready(function () {
 		language: {
 			url: "js/th.json",
 		},
-		dom: "Bfrtlpi",
+		//dom: "lfrtip",
+		dom: "QBfrtlpi",
+	});
+
+	$("#taward,#train").DataTable({
+		order: [[0, "desc"]],
+		pageLength: 50,
+		buttons: [
+			//"searchBuilder",
+			"copy",
+			"excel",
+			{
+				extend: "csv",
+				charset: "UTF-8",
+				fieldSeparator: ",",
+				bom: true,
+			},
+			"print",
+		],
+		language: {
+			url: "js/th.json",
+		},
+		dom: "QBfrtlpi",
 	});
 });

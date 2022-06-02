@@ -95,6 +95,14 @@ function renderDate($date)
  return $thaiDate;
 }
 
+function renderYear($date)
+{
+
+ $list = explode("-", $date);
+ $thaiDate = (int) $list[2] . " " . $month[$list[1]] . " " . $list[0];
+ return $thaiDate;
+}
+
 function renderDate2($date)
 {
  $month = array(
@@ -137,6 +145,13 @@ function renderDate3($date)
  return $thaiDate;
 }
 
+function renderDate4($date)
+{
+ $list = explode("-", $date);
+ $thaiDate = $list[0] . "/" . $list[1] . "/" . $list[2];
+ return $thaiDate;
+}
+
 function DocTrain($conn, $table, $id)
 {
  $sql = "SELECT `tDoc` FROM `$table` WHERE `id`='$id'";
@@ -175,4 +190,10 @@ function getstat($conn, $name, $id)
  $result = mysqli_query($conn, $sql);
  $data = mysqli_fetch_row($result);
  return $data[0];
+}
+
+function TeacherSchool($conn, $tid)
+{
+ $sc_id = getteacher($conn, "sc_id", $tid);
+ return LinkSchool2($conn, $sc_id);
 }

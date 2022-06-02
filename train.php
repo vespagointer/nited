@@ -1,8 +1,8 @@
 <?php
 if (!defined("KRITSADAPONG")) {
- //die("Access Denied!");
- @header("location:404.php");
- @die("Access Denied!");
+    //die("Access Denied!");
+    @header("location:404.php");
+    @die("Access Denied!");
 }
 include_once "db.php";
 $type = $_GET["type"];
@@ -12,7 +12,7 @@ $ss_id = (int) @$_SESSION["ss_id"];
 $sql = "SELECT * FROM `$dbTable` WHERE `id` = $id";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) <= 0) {
- exit();
+    exit();
 }
 
 $data = mysqli_fetch_assoc($result);
@@ -27,64 +27,72 @@ extract($data);
 
 </style>
 <div class="bg-white col-lg-10 mx-auto my-3 rounded text-center">
-    <h6 class="p-3 fw-bold"><?=$tName;?></h6>
+    <h6 class="p-3 fw-bold"><?= $tName; ?></h6>
 </div>
 <div class="col-md-8 mx-auto">
     <table class="table table-primary table-striped  taward">
         <tbody>
             <tr>
                 <td>ชื่อ - สกุล :</td>
-                <td class="nonEdit"><?=LinkTeacher($conn, $tid);?></td>
+                <td class="nonEdit"><?= LinkTeacher($conn, $tid); ?></td>
             </tr>
             <tr>
                 <td>หลักสูตร :</td>
-                <td data-parm="tName" data-type="text"><?=$tName;?></td>
+                <td data-parm="tName" data-type="text"><?= $tName; ?></td>
             </tr>
             <tr>
                 <td>ผู้จัด :</td>
-                <td data-parm="tBy" data-type="text"><?=$tBy;?></td>
+                <td data-parm="tBy" data-type="text"><?= $tBy; ?></td>
             </tr>
             <tr>
                 <td>ระดับ :</td>
-                <td data-parm="cate" data-type="select2"><?=$cate;?></td>
+                <td data-parm="cate" data-type="select2"><?= $cate; ?></td>
             </tr>
             <tr>
                 <td>ประเภท :</td>
-                <td data-parm="tType" data-type="select"><?=$tType;?></td>
+                <td data-parm="tType" data-type="select"><?= $tType; ?></td>
             </tr>
-            <?php if ($type == "train2"): ?>
+            <?php if ($type == "train2") : ?>
             <tr>
                 <td>รหัสหลักสูตร :</td>
-                <td data-parm="tCode" data-type="number"><?=$tCode;?></td>
+                <td data-parm="tCode" data-type="number"><?= $tCode; ?></td>
             </tr>
             <tr>
                 <td>ชั่วโมงอบรม :</td>
-                <td data-parm="tHour" data-type="number"><?=$tHour;?></td>
+                <td data-parm="tHour" data-type="number"><?= $tHour; ?></td>
             </tr>
             <tr>
                 <td>ปีการศึกษา :</td>
-                <td data-parm="tYear" data-type="number"><?=$tYear;?></td>
+                <td data-parm="tYear" data-type="number"><?= $tYear; ?></td>
             </tr>
-            <?php endif?>
+            <?php endif ?>
             <tr>
                 <td>วันที่เริ่ม :</td>
-                <td data-parm="tDateSt" data-type="date"><?=renderDate($tDateSt);?></td>
+                <td data-parm="tDateSt" data-type="date"><?= renderDate($tDateSt); ?></td>
             </tr>
             <tr>
                 <td>วันที่สิ้นสุด :</td>
-                <td data-parm="tDateEn" data-type="date"><?=renderDate($tDateEn);?></td>
+                <td data-parm="tDateEn" data-type="date"><?= renderDate($tDateEn); ?></td>
             </tr>
             <tr>
                 <td>เอกสาร/หลักฐาน : </td>
                 <td data-parm="tDoc" data-type="file">
-                    <a href='<?=$tDoc;?>' target='_blank'><i class='fas fa-file-contract'></i></a>
+                    <a href='<?= $tDoc; ?>' target='_blank'><i class='fas fa-file-contract'></i></a>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <?php
+    if (!empty($tDoc)) {
+        if (strtolower(substr($tDoc, -3)) == "pdf") {
+            echo '<embed src="' . $tDoc . '" type="application/pdf"   height="800px" width="100%">';
+        } else {
+            echo '<img src="' . $tDoc . '" width="100%" class="img-thumbnail rounded">';
+        }
+    }
+    ?>
 </div>
-
-
 <!-- Modal -->
 <div class="modal fade" id="xEdit" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
@@ -111,12 +119,12 @@ extract($data);
 
 
 <script>
-<?php if ($tid == $ss_id and $_SESSION["ss_status"] == "teacher"): ?>
-const ss_id = <?=$ss_id;?>;
-const xid = <?=$id;?>;
-<?php else: ?>
+<?php if ($tid == $ss_id and $_SESSION["ss_status"] == "teacher") : ?>
+const ss_id = <?= $ss_id; ?>;
+const xid = <?= $id; ?>;
+<?php else : ?>
 const ss_id = 0;
 const xid = 0;
-<?php endif?>
-const xmode = '<?=$type;?>';
+<?php endif ?>
+const xmode = '<?= $type; ?>';
 </script>

@@ -16,17 +16,17 @@ $sql = "SELECT `id`,`prefix`,`name`,`surname` FROM `tb_user` WHERE `id` != '$adm
 $result = mysqli_query($conn, $sql);
 $n = 0;
 while ($data = mysqli_fetch_array($result)) {
- $_SESSION["snID"][$n] = $data["id"];
- $_SESSION["snName"][$data["id"]] = $data["name"];
- $_SESSION["snSName"][$data["id"]] = $data["surname"];
- $n++;
+    $_SESSION["snID"][$n] = $data["id"];
+    $_SESSION["snName"][$data["id"]] = $data["name"];
+    $_SESSION["snSName"][$data["id"]] = $data["surname"];
+    $n++;
 }
 mysqli_free_result($result);
 
 $arrno = count($_SESSION["snID"]);
 
 for ($i = 0; $i < $arrno; $i++) {
- @$sn = $sn . "<option value=\"" . $_SESSION["snID"][$i] . "\">ศน." . $_SESSION["snName"][$_SESSION["snID"][$i]] . "</option>";
+    @$sn = $sn . "<option value=\"" . $_SESSION["snID"][$i] . "\">ศน." . $_SESSION["snName"][$_SESSION["snID"][$i]] . "</option>";
 }
 ?>
 <!DOCTYPE html>
@@ -54,32 +54,32 @@ for ($i = 0; $i < $arrno; $i++) {
         <link href="css/bootstrap-datepicker.css" rel="stylesheet">
         <link rel="stylesheet" href="DataTables/datatables.min.css">
         <?php
-if ($module == "gallery") {
- echo '<link rel="stylesheet" href="css/lightbox.css">';
-}
-?>
+    if ($module == "gallery") {
+        echo '<link rel="stylesheet" href="css/lightbox.css">';
+    }
+    ?>
     </head>
 
     <body>
 
 
         <?php
-include_once "navbar.php";
-?>
+    include_once "navbar.php";
+    ?>
 
 
         <div class="container">
             <?php
-if (empty($module)) {
- include_once "main.php";
- $module = "main";
-} else if (file_exists($module . ".php")) {
- include_once $module . ".php";
-} else {
- include_once "404.php";
-}
+        if (empty($module) || $module == "login" || $module == "takelogin") {
+            include_once "main.php";
+            $module = "main";
+        } else if (file_exists($module . ".php")) {
+            include_once $module . ".php";
+        } else {
+            include_once "404.php";
+        }
 
-?>
+        ?>
             <footer>
                 <!-- Copyright -->
                 <div class="text-end my-4 text-black-50">
@@ -88,7 +88,7 @@ if (empty($module)) {
                             border="0"><br />
                         ติดต่อ/สอบถาม Line Official<br /></a>
                     พัฒนาเว็บไซต์โดย
-                    <a class="text-reset fw-bold" href="<?=__FFF___;?>">กฤษฎาพงษ์ สุตะ</a>
+                    <a class="text-reset fw-bold" href="<?= __FFF___; ?>">กฤษฎาพงษ์ สุตะ</a>
                 </div>
                 <!-- Copyright -->
             </footer>
@@ -111,7 +111,8 @@ if (empty($module)) {
             var input1 = '<input type="text" class="form-control-sm" name="key" required>\n';
             var input2 =
                 "<input type=\"text\" class=\"form-control-sm\" name=\"key\" id=\"sKey\" autocomplete=\"เลือกวันที่\" required>\n";
-            var input3 = '<select class="form-control-sm" name="key" required>\n' + '<?=$sn;?>' + '\n</select>';
+            var input3 = '<select class="form-control-sm" name="key" required>\n' + '<?= $sn; ?>' +
+                '\n</select>';
             var data = "";
             //console.log(swhat);
             if (swhat == 'bookno' || swhat == 'gotno' || swhat == 'bookname' || swhat == 'bookfrom') {
@@ -133,17 +134,17 @@ if (empty($module)) {
         })
         </script>
         <?php
-if (@$wysiwyg == true) {
- echo "<script src=\"js/ckeditor.js\"></script>\n";
-}
-if (file_exists("js/" . $module . ".js")) {
- echo "<script src='js/$module.js'></script>";
-}
-if ($module == "gallery") {
- echo '<script src="js/lightbox.js"></script>';
-}
+    if (@$wysiwyg == true) {
+        echo "<script src=\"js/ckeditor.js\"></script>\n";
+    }
+    if (file_exists("js/" . $module . ".js")) {
+        echo "<script src='js/$module.js'></script>";
+    }
+    if ($module == "gallery") {
+        echo '<script src="js/lightbox.js"></script>';
+    }
 
-?>
+    ?>
     </body>
 
 </html>

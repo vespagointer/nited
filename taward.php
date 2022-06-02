@@ -86,6 +86,27 @@ if (!empty($adoc2)) {
             </tr>
         </tbody>
     </table>
+
+
+    <?php
+if (!empty($adoc1)) {
+ if (strtolower(substr($adoc1, -3)) == "pdf") {
+  echo '<embed src="' . $adoc1 . '" type="application/pdf"   height="800px" width="100%">';
+ } else {
+  echo '<img src="' . $adoc1 . '" width="100%" class="img-thumbnail rounded">';
+ }
+}
+
+if (!empty($adoc2)) {
+ if (strtolower(substr($adoc2, -3)) == "pdf") {
+  echo '<embed src="scafiles/' . $adoc2 . '" type="application/pdf"   height="800px" width="100%">';
+ } else {
+  echo '<img src="scafiles/' . $adoc2 . '" width="100%" class="img-thumbnail rounded">';
+ }
+}
+?>
+
+
 </div>
 
 <!-- Modal -->

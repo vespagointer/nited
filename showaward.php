@@ -11,13 +11,7 @@ $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_array($result);
 extract($data);
 $school = LinkSchool($conn, $sc_id);
-if ($id == 0) {
- $school = "ตัวอย่างพิทยาคม";
- $name = "นิเทศก์ดีเด่น";
- $description = "ได้รับรางวัลนิเทศก์ภายในดีเด่นเหรียญทองระดับประเทศ";
- $adate = "16/01/2565";
- $afrom = "สำนักงานคณะกรรมการการศึกษาขั้นพื้นฐาน";
-}
+
 ?>
 <div class="row col-lg-8 offset-lg-2 mt-3">
     <div class="text-center py-2">
@@ -26,10 +20,6 @@ if ($id == 0) {
     </div>
     <table class="table table-striped">
         <tbody>
-            <tr>
-                <td class="col-3">โรงเรียน</td>
-                <td class="col-9"><?=$school;?></td>
-            </tr>
             <tr>
                 <td class="col-3">รางวัล</td>
                 <td class="col-9"><?=$name;?></td>
@@ -91,3 +81,4 @@ if (isset($f[1])) {
  }
 }
 ?>
+</div>

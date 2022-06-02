@@ -2,7 +2,7 @@
 
 require_once "db.php";
 
-$sql = "SELECT `id`,`sc_id`,`name`,`pos`,`dep` FROM `tb_teacher` WHERE `sc_id`=99";
+$sql = "SELECT * FROM `tb_teacher` WHERE `sc_id`=99";
 
 $result = mysqli_query($conn, $sql);
 
@@ -17,6 +17,8 @@ $result = mysqli_query($conn, $sql);
             <tr>
                 <th>#</th>
                 <th>ชื่อ - สกุล</th>
+                <th>หมายเลขโทรศัพท์</th>
+                <th>อีเมล์</th>
                 <th>ตำแหน่ง</th>
                 <th>กลุ่มงาน</th>
             </tr>
@@ -29,7 +31,9 @@ while ($data = mysqli_fetch_assoc($result)):
  ?>
             <tr>
                 <td><?=$i;?></td>
-                <td><a href="index.php?module=profile&id=<?=$id;?>"><?=$name;?></a></td>
+                <td><a href="index.php?module=profilespm&id=<?=$id;?>"><?=$name;?></a></td>
+                <td><?=$tel;?></td>
+                <td><?=$email;?></td>
                 <td><?=$pos;?></td>
                 <td><?=getSpmDep($conn, $id);?></td>
             </tr>

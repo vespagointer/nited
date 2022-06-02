@@ -3,7 +3,7 @@ if (!defined("KRITSADAPONG")) {
  @header("location:404.php");
  @die("Access Denied!");
 }
-$showNum = 20;
+$showNum = 25;
 $page    = @$_GET["page"];
 if (empty($page)) {$page = 1;}
 $st   = ($page - 1) * $showNum;
@@ -84,7 +84,7 @@ while ($data = mysqli_fetch_array($result)) {
  ?>
         <tr>
             <th scope="row" class="text-center"><?=$nost;?></th>
-            <td><a href="./user/index.php?module=projectdetail&id=<?=$id;?>"><?=html_entity_decode($pname);?></a></td>
+            <td><a href="./index.php?module=projectdetail&id=<?=$id;?>"><?=html_entity_decode($pname);?></a></td>
             <td>ศน.<?=$_SESSION["snName"][$person];?></td>
         </tr>
         <?php

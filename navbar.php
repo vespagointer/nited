@@ -3,7 +3,7 @@
 // returns: t1
 $page = $module;
 if (!isset($page)) {
- $page = "index";
+    $page = "index";
 }
 
 ?>
@@ -22,12 +22,30 @@ if (!isset($page)) {
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">สพม.น่าน</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=spm">ข้อมูล
+                                สพม.น่าน</a></li>
+                        <li><a class="dropdown-item" style="font-size:0.75rem;"
+                                href="index.php?module=spmlist">รายชื่อบุคลากร</a></li>
+                        <li><a class="dropdown-item" style="font-size:0.75rem;"
+                                href="index.php?module=spmaward">ผลงาน</a></li>
+                        <li><a class="dropdown-item" style="font-size:0.75rem;"
+                                href="index.php?module=project">โครงการ</a></li>
+                        <li><a class="dropdown-item" style="font-size:0.75rem;" href="https://cert.spmnan.go.th/"
+                                target="_blank">ระบบพิมพ์เกียรติบัตร</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">รายชื่อ</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" style="font-size:0.75rem;"
                                 href="index.php?module=school">รายชื่อโรงเรียน</a></li>
                         <li><a class="dropdown-item" style="font-size:0.75rem;"
                                 href="index.php?module=teacherlist">รายชื่อครู</a></li>
+                        <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=psmt">ทำเนียบ
+                                สควค.</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -124,27 +142,27 @@ if (!isset($page)) {
 
                 </li>
 -->
-                <?php if (@$_SESSION["ss_status"] == "user" || @$_SESSION["ss_status"] == "admin") {?>
+                <?php if (@$_SESSION["ss_status"] == "user" || @$_SESSION["ss_status"] == "admin") { ?>
                 <li class="nav-item"><a class="nav-link" href="./user/">ระบบงานนิเทศก์</a></li>
-                <?php }?>
+                <?php } ?>
 
-                <?php if (@$_SESSION["ss_status"] == "school" || @$_SESSION["ss_status"] == "admin") {?>
+                <?php if (@$_SESSION["ss_status"] == "school" || @$_SESSION["ss_status"] == "admin") { ?>
                 <li class="nav-item"><a class="nav-link" href="./school/">ระบบข้อมูลโรงเรียน</a></li>
-                <?php }?>
+                <?php } ?>
 
-                <?php if (@$_SESSION["ss_status"] == "teacher" || @$_SESSION["ss_status"] == "admin") {?>
+                <?php if (@$_SESSION["ss_status"] == "teacher" || @$_SESSION["ss_status"] == "admin") { ?>
                 <li class="nav-item"><a class="nav-link" href="./teacher/">ระบบข้อมูลครู</a></li>
-                <?php }?>
+                <?php } ?>
 
-                <?php if (@$_SESSION["ss_status"] == "spm" || @$_SESSION["ss_status"] == "admin") {?>
+                <?php if (@$_SESSION["ss_status"] == "spm" || @$_SESSION["ss_status"] == "admin") { ?>
                 <li class="nav-item"><a class="nav-link" href="./spm/">ระบบ สพม.น่าน</a></li>
-                <?php }?>
+                <?php } ?>
 
-                <?php if (@$_SESSION["logined"] == true) {?>
+                <?php if (@$_SESSION["logined"] == true) { ?>
                 <li class="nav-item"><a class="nav-link" href="logout.php">ออกจากระบบ</a></li>
-                <?php } else {?>
+                <?php } else { ?>
                 <li class="nav-item"><a class="nav-link" href="login.php">เข้าสู่ระบบ</a></li>
-                <?php }?>
+                <?php } ?>
             </ul>
         </div>
     </div>

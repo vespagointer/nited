@@ -16,16 +16,16 @@ $aCount = array_sum($data);
 ksort($data, SORT_NUMERIC);
 arsort($data);
 if ($aCount > 0) {
- $count = 1;
- foreach ($data as $key => $val) {
-  //$aLabels[] = getschool($conn, "name", substr($key, 2));
-  $aLabels[] = $sName[(substr($key, 2) - 1)];
-  $aData[] = $val;
-  if ($count == $max) {
-   break;
-  }
-  $count++;
- }
+    $count = 1;
+    foreach ($data as $key => $val) {
+        //$aLabels[] = getschool($conn, "name", substr($key, 2));
+        $aLabels[] = $sName[(substr($key, 2) - 1)];
+        $aData[] = $val;
+        if ($count == $max) {
+            break;
+        }
+        $count++;
+    }
 }
 
 $sql = "SELECT * FROM `tb_statistics` WHERE `name`='project'";
@@ -40,16 +40,16 @@ ksort($data, SORT_NUMERIC);
 arsort($data);
 //var_dump($data);
 if ($pCount > 0) {
- $count = 1;
- foreach ($data as $key => $val) {
-  //$pLabels[] = getschool($conn, "name", substr($key, 2));
-  $pLabels[] = $sName[(substr($key, 2) - 1)];
-  $pData[] = $val;
-  if ($count == $max) {
-   break;
-  }
-  $count++;
- }
+    $count = 1;
+    foreach ($data as $key => $val) {
+        //$pLabels[] = getschool($conn, "name", substr($key, 2));
+        $pLabels[] = $sName[(substr($key, 2) - 1)];
+        $pData[] = $val;
+        if ($count == $max) {
+            break;
+        }
+        $count++;
+    }
 }
 ?>
 
@@ -60,7 +60,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_num_rows($result);
 ?>
 <div class="mt-3"></div>
-<div class="offset-1 col-10">
+<div class="col-10 mx-auto">
     <div id="NanGallery" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <?php if ($row == 0): ?>
@@ -71,9 +71,9 @@ $row = mysqli_num_rows($result);
             <?php endif;
 
 for ($i = 0; $i < $row; $i++):
- $ac = "";
- if ($i == 0) {$ac = "class=\"active\" aria-current=\"true\"";}
- ?>
+    $ac = "";
+    if ($i == 0) {$ac = "class=\"active\" aria-current=\"true\"";}
+    ?>
             <button type="button" data-bs-target="#NanGallery" data-bs-slide-to="<?=$i;?>" aria-label="Slide <?=$i;?>"
                 <?=$ac;?>></button>
             <?php endfor?>
@@ -82,13 +82,13 @@ for ($i = 0; $i < $row; $i++):
             <?php
 $i = 0;
 while ($data = mysqli_fetch_assoc($result)):
- extract($data);
- $ac = "";
- if ($i == 0) {
-  $ac = "active";
-  $i++;}
- $school = getschool($conn, "name", $sc_id);
- ?>
+    extract($data);
+    $ac = "";
+    if ($i == 0) {
+        $ac = "active";
+        $i++;}
+    $school = getschool($conn, "name", $sc_id);
+    ?>
 
             <div class="center-cropped carousel-item <?=$ac;?>" style="background-image: url('gallery/<?=$id;?>.jpg');">
                 <a href="index.php?module=gallery&id=<?=$id;?>">
@@ -123,12 +123,12 @@ endwhile;
         <table class="table">
             <tbody>
                 <?php
-$sql = "SELECT * FROM `tb_scpr` ORDER BY `id` DESC LIMIT 5";
+$sql = "SELECT * FROM `tb_scpr` ORDER BY `id` DESC LIMIT 10";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
- $i = 1;
- while ($data = mysqli_fetch_assoc($result)) {
-  ?>
+    $i = 1;
+    while ($data = mysqli_fetch_assoc($result)) {
+        ?>
                 <tr class="news news<?=$i;?>">
                     <td scope="row"><i class="fas fa-bullhorn text-white fs-5"></i></td>
                     <td>
@@ -138,17 +138,17 @@ if (mysqli_num_rows($result) > 0) {
                     <td>
                         <?php
 if ($data["sc_id"] == 99) {
-   echo LinkSchool2($conn, $data["sc_id"]);
-  } else {
-   echo LinkSchool($conn, $data["sc_id"]);
-  }
-  ?>
+            echo LinkSchool2($conn, $data["sc_id"]);
+        } else {
+            echo LinkSchool($conn, $data["sc_id"]);
+        }
+        ?>
 
                     </td>
                 </tr>
                 <?php
 $i++;
- }
+    }
 }?>
             </tbody>
         </table>
@@ -222,9 +222,9 @@ var sName = ["ศ.ว.", "ศ.น.", "บส.ว", "น.อ.", "ม.ร.", "บ.
 $sql = "SELECT * FROM `tb_scaward` ORDER BY `id` DESC LIMIT 10";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
- $i = 1;
- while ($data = mysqli_fetch_assoc($result)) {
-  ?>
+    $i = 1;
+    while ($data = mysqli_fetch_assoc($result)) {
+        ?>
                 <tr class="pastel pastel<?=$i;?>">
                     <td scope="row"><i class="fas fa-trophy text-white fs-5"></i></td>
                     <td><a href="index.php?module=award&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a>
@@ -233,7 +233,7 @@ if (mysqli_num_rows($result) > 0) {
                 </tr>
                 <?php
 $i++;
- }
+    }
 }?>
             </tbody>
         </table>
@@ -250,15 +250,15 @@ $i++;
 $sql = "SELECT * FROM `tb_taward_school` UNION SELECT * FROM `tb_taward_self`UNION SELECT * FROM `tb_taward_student`ORDER By `id` DESC LIMIT 10;";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
- $i = 1;
- while ($data = mysqli_fetch_assoc($result)) {
-  //$text = preg_replace('\.\.\/', '', $data["adoc1"]);
-  $type = explode("/", $data["adoc1"]);
-  if ($type[0] == "..") {
-   array_shift($type);
-  }
-  // $type = explode("/", $text);
-  ?>
+    $i = 1;
+    while ($data = mysqli_fetch_assoc($result)) {
+        //$text = preg_replace('\.\.\/', '', $data["adoc1"]);
+        $type = explode("/", $data["adoc1"]);
+        if ($type[0] == "..") {
+            array_shift($type);
+        }
+        // $type = explode("/", $text);
+        ?>
                 <tr class="pastel pastel<?=$i;?>">
                     <td scope="row"><i class="fas fa-award text-white fs-5"></i></td>
                     <td><a href="../index.php?module=taward&atype=<?=$type[1];?>&id=<?=$data["id"];?>"
@@ -268,7 +268,7 @@ if (mysqli_num_rows($result) > 0) {
                 </tr>
                 <?php
 $i++;
- }
+    }
 }?>
             </tbody>
         </table>
@@ -288,7 +288,7 @@ $i++;
 $sql = "SELECT * FROM `tb_train1` ORDER By `id` DESC LIMIT 10;";
 $result = mysqli_query($conn, $sql);
 while ($data = mysqli_fetch_assoc($result)) {
- ?>
+    ?>
                 <tr>
                     <td><a href="index.php?module=train&type=train1&id=<?=$data["id"];?>" target="_blank">
                             <?=$data["tName"];?></a></td>
@@ -311,7 +311,7 @@ while ($data = mysqli_fetch_assoc($result)) {
 $sql = "SELECT * FROM `tb_train2` ORDER By `id` DESC LIMIT 10;";
 $result = mysqli_query($conn, $sql);
 while ($data = mysqli_fetch_assoc($result)) {
- ?>
+    ?>
                 <tr>
                     <td><a href="index.php?module=train&type=train2&id=<?=$data["id"];?>" target="_blank">
                             <?=$data["tName"];?></a></td>

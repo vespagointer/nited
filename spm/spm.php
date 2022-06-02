@@ -35,7 +35,7 @@ while ($data = mysqli_fetch_assoc($result)) {
                 <td data-parm="pos" data-id="<?=$id;?>"><?=$pos;?></td>
                 <td data-parm="spmdep" data-id="<?=$id;?>"><?=getSpmDep($conn, $id);?></td>
                 <td class="text-center">
-                    | <a href="../index.php?module=profile&id=<?=$id;?>" data-bs-toggle="tooltip"
+                    | <a href="../index.php?module=profilespm&id=<?=$id;?>" data-bs-toggle="tooltip"
                         data-bs-placement="top" title="ดูโปรไฟล์" target="_blank"><i class="fas fa-user"></i></a>
                     | <span data-bs-toggle="modal" data-bs-target="#cPass" data-id="<?=$id;?>"><a href="#"
                             data-bs-toggle="tooltip" data-bs-placement="top" title="เปลี่ยนรหัสผ่าน">

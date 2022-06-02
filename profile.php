@@ -61,6 +61,13 @@ extract($data);
                 <?php if (@$_SESSION["ss_status"] == "school" || @$_SESSION["ss_status"] == "user" || @$_SESSION["ss_status"] == "admin" || @$_SESSION["ss_status"] == "spm"): ?>
                 <tr>
                     <td>
+                        วันเกิด :
+                    </td>
+                    <td><?=renderDate3($bdate);?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         อีเมล์ :
                     </td>
                     <td><?=$email;?>

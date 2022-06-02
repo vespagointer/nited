@@ -63,26 +63,26 @@
     "condition": "เงื่อนไข",
     "conditions": {
       "date": {
-        "after": "After",
-        "before": "Before",
-        "between": "Between",
-        "empty": "Empty",
-        "equals": "Equals",
-        "not": "Not",
-        "notBetween": "Not Between",
-        "notEmpty": "Not Empty"
+        "after": "ก่อน",
+        "before": "หลัง",
+        "between": "อยู่ในช่วง",
+        "empty": "ไม่มีข้อมูล",
+        "equals": "เท่ากับ",
+        "not": "ไม่เท่ากับ",
+        "notBetween": "ไม่อยู่ในช่วง",
+        "notEmpty": "มีข้อมูล"
       },
       "number": {
-        "between": "Between",
-        "empty": "Empty",
-        "equals": "Equals",
-        "gt": "Greater Than",
-        "gte": "Greater Than Equal To",
-        "lt": "Less Than",
-        "lte": "Less Than Equal To",
-        "not": "Not",
-        "notBetween": "Not Between",
-        "notEmpty": "Not Empty"
+        "between": "อยู่ในช่วง",
+        "empty": "ไม่มีข้อมูล",
+        "equals": "เท่ากับ",
+        "gt": "มากกว่า",
+        "gte": "มากกว่าหรือเท่ากับ",
+        "lt": "น้อยกว่า",
+        "lte": "น้อยกว่าหรือเท่ากับ",
+        "not": "ไม่เท่ากับ",
+        "notBetween": "ไม่อยู่ในช่วง",
+        "notEmpty": "มีข้อมูล"
       },
       "string": {
         "contains": "มีคำว่า",
@@ -118,9 +118,11 @@
       "_": "กรองข้อมูล %d เงื่อนไข"
     }
   },
-
   "datetime": {
-    "amPm": ["เที่ยงวัน", "เที่ยงคืน"],
+    "amPm": [
+      "เที่ยงวัน",
+      "เที่ยงคืน"
+    ],
     "hours": "ชั่วโมง",
     "minutes": "นาที",
     "months": {
@@ -180,7 +182,6 @@
       "restore": "ยกเลิกการแก้ไข"
     }
   },
-
   "select": {
     "cells": {
       "1": "เลือก 1 cell",
