@@ -12,6 +12,7 @@ $result = mysqli_query($conn, $sql);
             <tr>
                 <th class=" text-center">#</th>
                 <th class="text-center">ชื่อ - สกุล</th>
+                <th class="text-center">วันเกิด</th>
                 <th class="text-center">อีเมล์</th>
                 <th class="text-center">เบอร์โทร</th>
                 <th class="text-center">ตำแหน่ง</th>
@@ -30,6 +31,7 @@ while ($data = mysqli_fetch_assoc($result)) {
             <tr>
                 <td class=" text-center"><?=$i;?></td>
                 <td data-parm="name" data-id="<?=$id;?>"><?=$name;?></td>
+                <td data-parm="name" data-id="<?=$id;?>"><?=renderDate3($bdate);?></td>
                 <td data-parm="email" data-id="<?=$id;?>"><?=$email;?></td>
                 <td data-parm="tel" data-id="<?=$id;?>"><?=$tel;?></td>
                 <td data-parm="pos" data-id="<?=$id;?>"><?=$pos;?></td>
