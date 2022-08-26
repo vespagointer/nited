@@ -1,8 +1,8 @@
-$("#getURL").submit(function(event) {
+$("#getURL").submit(function (event) {
     // Stop form from submitting normally
     event.preventDefault();
     var tmpSchool = [];
-    $("#school").each(function(e) {
+    $("#school").each(function (e) {
         tmpSchool.push($(this).val());
     });
     console.log(tmpSchool);
@@ -24,7 +24,7 @@ $("#getURL").submit(function(event) {
     });
 
     // Put the results in a div
-    posting.done(function(data) {
+    posting.done(function (data) {
         //var content = $(data); //.find("#content");
         //$("#result").empty().append(content);
         //alert("Data Loaded: " + data);
@@ -44,6 +44,9 @@ $("#getURL").submit(function(event) {
             $("#tbLinks").empty().load("ltable.php");
         }
     });
+
+
+
 });
 
 function CopyLink() {
@@ -62,14 +65,24 @@ function CopyLink() {
 }
 
 $(".chosen-select").chosen();
-$("#ckAll").click(function(e) {
+$("#ckAll").click(function (e) {
     if ($(this).is(":checked")) {
         $("#school option").prop("selected", true).trigger("chosen:updated");
     } else {
         $("#school option").prop("selected", false).trigger("chosen:updated");
     }
 });
-$("#save").click(function(e) {
+$("#save").click(function (e) {
     var data = $("select#school").val();
     console.log(data);
+});
+
+$(document).ready(function () {
+    $('#tbshorturl').DataTable({
+        order: [[0, 'desc']],
+        pageLength: 25,
+        language: {
+            url: "js/th.json",
+        },
+    });
 });

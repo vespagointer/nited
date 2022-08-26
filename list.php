@@ -8,7 +8,6 @@ require_once "db.php";
 table.dataTable.display tbody tr.odd {
     background-color: #CDE3F5 !important;
 }*/
-
 </style>
 <div class="mt-md-3">
 
@@ -16,21 +15,21 @@ table.dataTable.display tbody tr.odd {
 
 $mode = $_GET["mode"];
 if ($mode == "scpr") {
- if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
-  $scid = $_GET["scid"];
-  $sql = "SELECT * FROM `tb_scpr` WHERE `sc_id`=$scid ORDER BY `id` ASC";
- } else {
-  $sql = "SELECT * FROM `tb_scpr` ORDER BY `id` ASC";
- }
- $result = mysqli_query($conn, $sql);
- ?>
+    if (isset($_GET["scid"]) and (int) $_GET["scid"] != 0) {
+        $scid = $_GET["scid"];
+        $sql = "SELECT * FROM `tb_scpr` WHERE `sc_id`=$scid ORDER BY `id` ASC";
+    } else {
+        $sql = "SELECT * FROM `tb_scpr` ORDER BY `id` ASC";
+    }
+    $result = mysqli_query($conn, $sql);
+    ?>
     <div class="text-center mb-3">
         <h3>ข่าวประชาสัมพันธ์</h3>
         <?php
 if (isset($scid)) {
-  echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
- }
- ?>
+        echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="scpr" style="width:100%">
         <thead>
@@ -45,9 +44,9 @@ if (isset($scid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
+    while ($data = mysqli_fetch_assoc($result)):
 
- ?>
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=news&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a></td>
@@ -57,8 +56,8 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
@@ -77,9 +76,9 @@ if ($mode == "gallery") {
         <h3>ภาพกิจกรรม</h3>
         <?php
 if (isset($scid)) {
-  echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
- }
- ?>
+        echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="gallery" style="width:100%">
         <thead>
@@ -94,9 +93,9 @@ if (isset($scid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
+    while ($data = mysqli_fetch_assoc($result)):
 
- ?>
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=gallery&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a></td>
@@ -106,8 +105,8 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
@@ -127,9 +126,9 @@ if ($mode == "scaward") {
         <h3>รางวัลที่โรงเรียนได้รับ</h3>
         <?php
 if (isset($scid)) {
-  echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
- }
- ?>
+        echo "<h4>โรงเรียน" . getschool($conn, "name", $scid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="scaward" style="width:100%">
         <thead>
@@ -144,9 +143,9 @@ if (isset($scid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
+    while ($data = mysqli_fetch_assoc($result)):
 
- ?>
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=award&id=<?=$data["id"];?>" target="_blank"><?=$data["name"];?></a></td>
@@ -156,8 +155,8 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
@@ -177,9 +176,9 @@ if ($mode == "taward") {
         <h3>รางวัลที่ครูได้รับ</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="taward" style="width:100%">
         <thead>
@@ -197,24 +196,23 @@ if (isset($tid)) {
         <tbody>
             <?php
 $atype = array(
-  "self" => "รางวัลด้านการพัฒนาตนเอง",
-  "school" => "รางวัลด้านการพัฒนาโรงเรียน",
-  "student" => "รางวัลด้านการพัฒนานักเรียน",
- );
+        "self" => "รางวัลด้านการพัฒนาตนเอง",
+        "school" => "รางวัลด้านการพัฒนาโรงเรียน",
+        "student" => "รางวัลด้านการพัฒนานักเรียน",
+    );
 
- $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
-  $type = explode("/", $data["adoc1"]);
-  if ($type[0] == "..") {
-   array_shift($type);
-  }
-  ?>
+    $i = 1;
+    while ($data = mysqli_fetch_assoc($result)):
+        $type = explode("/", $data["adoc1"]);
+        if ($type[0] == "..") {
+            array_shift($type);
+        }
+        ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=taward&atype=<?=$type[1];?>&id=<?=$data["id"];?>" target="_blank">
                         <?=$data["aname"];?></a></td>
-                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>"
-                        target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
+                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>" target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
                 <td><?=TeacherSchool($conn, $data["tid"]);?></td>
                 <td><?=$data["cate"];?></td>
                 <td><?=$atype[$type[1]];?></td>
@@ -222,9 +220,9 @@ $atype = array(
                 <td><?=explode("-", $data["adate"])[0];?></td>
             </tr>
             <?php
- $i++;
- endwhile;
- ?>
+    $i++;
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
@@ -244,9 +242,9 @@ if ($mode == "train1") {
         <h3>รายงานการอบรม/ประชุม/สัมนา</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="train" style="width:100%">
         <thead>
@@ -263,14 +261,13 @@ if (isset($tid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
- ?>
+    while ($data = mysqli_fetch_assoc($result)):
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=train&type=train1&id=<?=$data["id"];?>" target="_blank">
                         <?=$data["tName"];?></a></td>
-                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>"
-                        target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
+                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>" target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
                 <td><?=TeacherSchool($conn, $data["tid"]);?></td>
                 <td><?=$data["cate"];?></td>
                 <td><?=renderDate($data["tDateEn"]);?></td>
@@ -278,8 +275,8 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
@@ -298,9 +295,9 @@ if ($mode == "train2") {
         <h3>รายงานการพัฒนาตนเอง</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="train" style="width:100%">
         <thead>
@@ -317,14 +314,13 @@ if (isset($tid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
- ?>
+    while ($data = mysqli_fetch_assoc($result)):
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="index.php?module=train&type=train2&id=<?=$data["id"];?>" target="_blank">
                         <?=$data["tName"];?></a></td>
-                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>"
-                        target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
+                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>" target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
                 <td><?=TeacherSchool($conn, $data["tid"]);?></td>
                 <td><?=$data["cate"];?></td>
                 <td>
@@ -334,8 +330,8 @@ $i = 1;
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?
@@ -355,9 +351,9 @@ if ($mode == "publish") {
         <h3>เผยแพร่ผลงาน</h3>
         <?php
 if (isset($tid)) {
-  echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
- }
- ?>
+        echo "<h4>" . getteacher($conn, "name", $tid) . "</h4>";
+    }
+    ?>
     </div>
     <table class="display mb-2" id="publish" style="width:100%">
         <thead>
@@ -372,21 +368,20 @@ if (isset($tid)) {
         <tbody>
             <?php
 $i = 1;
- while ($data = mysqli_fetch_assoc($result)):
- ?>
+    while ($data = mysqli_fetch_assoc($result)):
+    ?>
             <tr>
                 <td><?=$i;?></td>
                 <td><a href="<?=$data["link"];?>" target="_blank">
                         <?=$data["name"];?></a></td>
-                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>"
-                        target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
+                <td><a href="index.php?module=profile&id=<?=$data["tid"];?>" target="_blank"><?=getteacher($conn, "name", $data["tid"]);?></a></td>
                 <td><?=renderDate2($data["date"]);?></td>
                 <td><?=((explode("-", $data["date"])[0]) + 543);?></td>
             </tr>
             <?php
 $i++;
- endwhile;
- ?>
+    endwhile;
+    ?>
         </tbody>
     </table>
     <?php

@@ -1,37 +1,38 @@
 <?php
 session_start();
+if ($_SESSION["ss_status"] != "school") {@header("location:../logout.php");}
 if ($_SESSION["ss_status"] != "school") {
- die("Access Denied!");
+    die("Access Denied!");
 }
 define("KRITSADAPONG", true);
 require_once "../conn.php";
 
 if (@$_POST["mode"] == "award") {
- extract($_POST);
- $sql = "UPDATE `tb_scaward` SET `$parm` = '$tmpData' WHERE `id`='$id'";
- if (mysqli_query($conn, $sql)) {
-  echo "OK";
- } else {
-  echo mysqli_error($conn);
- }
+    extract($_POST);
+    $sql = "UPDATE `tb_scaward` SET `$parm` = '$tmpData' WHERE `id`='$id'";
+    if (mysqli_query($conn, $sql)) {
+        echo "OK";
+    } else {
+        echo mysqli_error($conn);
+    }
 }
 
 if (@$_POST["mode"] == "teacher") {
- extract($_POST);
- $sql = "UPDATE `tb_teacher` SET `$parm` = '$tmpData' WHERE `id`='$id'";
- if (mysqli_query($conn, $sql)) {
-  echo "OK";
- } else {
-  echo mysqli_error($conn);
- }
+    extract($_POST);
+    $sql = "UPDATE `tb_teacher` SET `$parm` = '$tmpData' WHERE `id`='$id'";
+    if (mysqli_query($conn, $sql)) {
+        echo "OK";
+    } else {
+        echo mysqli_error($conn);
+    }
 }
 
 if (@$_POST["mode"] == "school") {
- extract($_POST);
- $sql = "UPDATE `tb_school` SET `$parm` = '$tmpData' WHERE `id`='$id'";
- if (mysqli_query($conn, $sql)) {
-  echo "OK";
- } else {
-  echo mysqli_error($conn);
- }
+    extract($_POST);
+    $sql = "UPDATE `tb_school` SET `$parm` = '$tmpData' WHERE `id`='$id'";
+    if (mysqli_query($conn, $sql)) {
+        echo "OK";
+    } else {
+        echo mysqli_error($conn);
+    }
 }

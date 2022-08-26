@@ -7,16 +7,16 @@ if ($_SESSION["logined"] != true || ($_SESSION["ss_status"] != "user" && $_SESSI
 $module = @$_GET["module"];
 define("KRITSADAPONG", true);
 require_once "../conn.php";
-$sql    = "SELECT `id`,`prefix`,`name`,`surname` FROM `tb_user` WHERE `id` != '$adminID'";
+$sql = "SELECT `id`,`prefix`,`name`,`surname` FROM `tb_user` WHERE `id` != '$adminID'";
 $result = mysqli_query($conn, $sql);
-$i      = 0;
+$i = 0;
 while ($data = mysqli_fetch_array($result)) {
-    $person["id"][$i]      = $data["id"];
-    $person["prefix"][$i]  = $data["prefix"];
-    $person["name"][$i]    = $data["name"];
+    $person["id"][$i] = $data["id"];
+    $person["prefix"][$i] = $data["prefix"];
+    $person["name"][$i] = $data["name"];
     $person["surname"][$i] = $data["surname"];
-    $snName[$data["id"]]   = $data["name"];
-    $snSName[$data["id"]]  = $data["surname"];
+    $snName[$data["id"]] = $data["name"];
+    $snSName[$data["id"]] = $data["surname"];
     $i++;
 }
 $arrno = count($person['name']);
@@ -44,6 +44,7 @@ for ($i = 0; $i < $arrno; $i++) {
         <link href="../css/theme.css" rel="stylesheet">
         <link href="../css/bootstrap-datepicker.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/chosen.css">
+        <link rel="stylesheet" href="../DataTables/datatables.min.css">
         <style type="text/css">
         .wrapper {
             display: flex;
@@ -200,9 +201,9 @@ for ($i = 0; $i < $arrno; $i++) {
                         </ul>
                     </li>
                     <li><a href="index.php?module=doc"><i class="fas fa-file-alt"></i> เอกสารงานนิเทศฯ</a></li>
-                    <?php if ($_SESSION["ss_status"] == "admin") { ?>
+                    <?php if ($_SESSION["ss_status"] == "admin") {?>
                     <li><a href="../admin/"><i class="fas fa-server"></i> Admin Control Panel</a></li>
-                    <?php } ?>
+                    <?php }?>
                     <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a></li>
                 </ul>
                 <ul class="list-unstyled components">
@@ -218,9 +219,9 @@ for ($i = 0; $i < $arrno; $i++) {
                         <div class="text-end">
                             <img src="../img/profile.png" height="32px" /> <a href="index.php?module=profile">
                                 <?php
-                            echo $_SESSION["ss_name"] . " ";
-                            echo $_SESSION["ss_surname"];
-                            ?>
+echo $_SESSION["ss_name"] . " ";
+echo $_SESSION["ss_surname"];
+?>
                             </a>
                         </div>
                     </div>
@@ -229,20 +230,20 @@ for ($i = 0; $i < $arrno; $i++) {
                 </div>
                 <div id="page">
                     <?php
-                if (empty($module)) {
-                    include_once "main.php";
-                } else if (file_exists($module . ".php")) {
-                    include_once $module . ".php";
-                } else {
-                    include_once "404.php";
-                }
-                ?>
+if (empty($module)) {
+    include_once "main.php";
+} else if (file_exists($module . ".php")) {
+    include_once $module . ".php";
+} else {
+    include_once "404.php";
+}
+?>
                 </div>
                 <footer>
                     <!-- Copyright -->
                     <div class="text-center p-4 text-black-50">
                         พัฒนาเว็บไซต์โดย
-                        <a class="text-reset fw-bold" href="<?= __FFF___; ?>">กฤษฎาพงษ์ สุตะ</a>
+                        <a class="text-reset fw-bold" href="<?=__FFF___;?>">กฤษฎาพงษ์ สุตะ</a>
                     </div>
                     <!-- Copyright -->
                 </footer>
@@ -261,6 +262,7 @@ for ($i = 0; $i < $arrno; $i++) {
         <script src="../locales/bootstrap-datepicker.th.min.js"></script>
         <script src="../js/bootstrap-datepicker-BE.js"></script>
         <script src="../js/chosen.jquery.min.js"></script>
+        <script src="../DataTables/datatables.min.js"></script>
         <script>
         $(document).ready(function() {
             $('#report').hide();
@@ -289,7 +291,7 @@ for ($i = 0; $i < $arrno; $i++) {
             var input1 = '<input type="text" class="form-control-sm" name="key" required>\n';
             var input2 =
                 "<input type=\"text\" class=\"form-control-sm\" name=\"key\" id=\"sKey\" autocomplete=\"เลือกวันที่\" required>\n";
-            var input3 = '<select class="form-control-sm" name="key" required>\n' + '<?= $sn; ?>' +
+            var input3 = '<select class="form-control-sm" name="key" required>\n' + '<?=$sn;?>' +
                 '\n</select>';
             var data = "";
             //console.log(swhat);
@@ -349,10 +351,10 @@ for ($i = 0; $i < $arrno; $i++) {
         });
         </script>
         <?php
-    if (file_exists("js/" . $module . ".js")) {
-        echo "<script src='js/$module.js'></script>";
-    }
-    ?>
+if (file_exists("js/" . $module . ".js")) {
+    echo "<script src='js/$module.js'></script>";
+}
+?>
     </body>
 
 </html>

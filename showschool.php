@@ -3,7 +3,7 @@ require_once "db.php";
 $scid = $_GET["id"];
 $imgPro = "pictures/logo/" . $scid . ".png";
 if (!file_exists($imgPro)) {
- $imgPro = "img/spmnan_logo.png";
+    $imgPro = "img/spmnan_logo.png";
 }
 $sql = "SELECT * FROM `tb_school` WHERE `id`=$scid";
 $result = mysqli_query($conn, $sql);
@@ -15,8 +15,7 @@ extract($data);
         <div class="toast-body" style="font-size:0.5rem">
             Tips: ข้อความที่มี <i class="far fa-edit"></i> ต่อท้าย สามารถ ดับเบิ้ลคลิ๊กเพื่อแก้ไขข้อความได้
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto btn-sm" data-bs-dismiss="toast"
-            aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto btn-sm" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 </div>
 
@@ -94,8 +93,12 @@ extract($data);
                 <td> <a href="index.php?module=teacherlist&scid=<?=$scid;?>">คลิ๊กที่นี่</a> </td>
             </tr>
             <tr>
-                <th scope="row" class="fit">ขอมูลทางลูกเสือ</th>
+                <th scope="row" class="fit">ข้อมูลทางลูกเสือ</th>
                 <td> <a href="index.php?module=scout&scid=<?=$scid;?>">คลิ๊กที่นี่</a> </td>
+            </tr>
+            <tr>
+                <th scope="row" class="fit">ผลงานด้านผู้เรียน</th>
+                <td> <a href="index.php?module=stdaward&scid=<?=$scid;?>">คลิ๊กที่นี่</a> </td>
             </tr>
         </tbody>
     </table>
@@ -111,9 +114,9 @@ $sql = "SELECT * FROM `tb_project`";
 $result = mysqli_query($conn, $sql);
 $i = 0;
 while ($row = mysqli_fetch_assoc($result)) {
- $pID[$i] = $row['id'];
- $pName[$row["id"]] = $row["pname"];
- $i++;
+    $pID[$i] = $row['id'];
+    $pName[$row["id"]] = $row["pname"];
+    $i++;
 }
 
 $sql = "SELECT `id`,`pid` FROM `tb_uproject` WHERE `scid`='$scid' ORDER BY `pid` ASC";
@@ -121,16 +124,16 @@ $result = mysqli_query($conn, $sql);
 //$scpid=[];
 $i = 0;
 if (mysqli_num_rows($result) > 0) {
- while ($data = mysqli_fetch_assoc($result)) {
-  $scpid[$i] = $data["pid"];
-  $delID[$data["pid"]] = $data["id"];
+    while ($data = mysqli_fetch_assoc($result)) {
+        $scpid[$i] = $data["pid"];
+        $delID[$data["pid"]] = $data["id"];
 
-  $i++;
- }
+        $i++;
+    }
 }
 if (isset($scpid)) {
- @$pID = @array_diff($pID, $scpid);
- @$pID = @array_values($pID);
+    @$pID = @array_diff($pID, $scpid);
+    @$pID = @array_values($pID);
 }
 ?>
 
@@ -139,15 +142,15 @@ if (isset($scpid)) {
     <div class="mx-3 mb-4 card-body">
         <?php
 if (isset($scpid)) {
- echo "<ol>";
- foreach ($scpid as $key => $id) {
-  echo "<li>";
-  echo $pName[$id];
-  echo "</li>";
- }
- echo "</ol>";
+    echo "<ol>";
+    foreach ($scpid as $key => $id) {
+        echo "<li>";
+        echo $pName[$id];
+        echo "</li>";
+    }
+    echo "</ol>";
 } else {
- echo "ยังไม่มีข้อมูลโครงการที่เข้าร่วม";
+    echo "ยังไม่มีข้อมูลโครงการที่เข้าร่วม";
 }
 
 ?>
@@ -162,15 +165,15 @@ $sql = "SELECT * FROM `tb_aproject` WHERE `scid`='$scid' AND `ptype`=1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
- echo "<ol>";
- while ($data = mysqli_fetch_assoc($result)) {
-  echo "<li>";
-  echo $data["pname"];
-  echo "</li>";
- }
- echo "</ol>";
+    echo "<ol>";
+    while ($data = mysqli_fetch_assoc($result)) {
+        echo "<li>";
+        echo $data["pname"];
+        echo "</li>";
+    }
+    echo "</ol>";
 } else {
- echo "ยังไม่มีข้อมูลโครงการในส่วนนี้";
+    echo "ยังไม่มีข้อมูลโครงการในส่วนนี้";
 }
 ?>
     </div>
@@ -184,16 +187,16 @@ $sql = "SELECT * FROM `tb_aproject` WHERE `scid`='$scid' AND `ptype`=2";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
- echo "<ol>";
- while ($data = mysqli_fetch_assoc($result)) {
-  echo "<li>";
-  echo $data["pname"];
-  echo " (" . $data["funder"] . ")";
-  echo "</li>";
- }
- echo "</ol>";
+    echo "<ol>";
+    while ($data = mysqli_fetch_assoc($result)) {
+        echo "<li>";
+        echo $data["pname"];
+        echo " (" . $data["funder"] . ")";
+        echo "</li>";
+    }
+    echo "</ol>";
 } else {
- echo "ยังไม่มีข้อมูลโครงการในส่วนนี้";
+    echo "ยังไม่มีข้อมูลโครงการในส่วนนี้";
 }
 ?>
     </div>
@@ -217,8 +220,8 @@ $sql = "SELECT * FROM `tb_scaward` WHERE `sc_id`=$scid ORDER BY `id` DESC";
 $result = mysqli_query($conn, $sql);
 $nost = mysqli_num_rows($result);
 while ($data = @mysqli_fetch_assoc($result)) {
- @extract($data);
- ?>
+    @extract($data);
+    ?>
         <tr>
             <td scope="row" class="text-center"><?=$nost;?></td>
             <td><a href="index.php?module=award&id=<?=$id;?>"><?=$name;?></a></td>
@@ -227,7 +230,7 @@ while ($data = @mysqli_fetch_assoc($result)) {
         </tr>
         <?php
 
- $nost--;
+    $nost--;
 
 }?>
     </tbody>
@@ -249,8 +252,8 @@ $sql = "SELECT * FROM `tb_scpr` WHERE `sc_id`=$scid ORDER BY `id` DESC";
 $result = mysqli_query($conn, $sql);
 $nost = mysqli_num_rows($result);
 while ($data = @mysqli_fetch_assoc($result)) {
- @extract($data);
- ?>
+    @extract($data);
+    ?>
         <tr>
             <td scope="row" class="text-center"><?=$nost;?></td>
             <td><a href="index.php?module=news&id=<?=$id;?>" target="_blank"><?=$name;?></a></td>
@@ -258,7 +261,7 @@ while ($data = @mysqli_fetch_assoc($result)) {
         </tr>
         <?php
 
- $nost--;
+    $nost--;
 
 }?>
     </tbody>
@@ -283,8 +286,8 @@ $sql = "SELECT * FROM `tb_gallery` WHERE `sc_id`=$scid ORDER BY `id` DESC";
 $result = mysqli_query($conn, $sql);
 $nost = mysqli_num_rows($result);
 while ($data = @mysqli_fetch_assoc($result)) {
- @extract($data);
- ?>
+    @extract($data);
+    ?>
         <tr>
             <td scope="row" class="text-center"><?=$nost;?></td>
             <td><a href="../index.php?module=gallery&id=<?=$id;?>" target="_blank"><?=$name;?></a></td>

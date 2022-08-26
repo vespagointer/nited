@@ -29,7 +29,7 @@ $sccCnt = [];
 
 if (isset($_GET["scid"]) && (int) $_GET["scid"] != 0) {
  $scid = (int) $_GET["scid"];
- $sql = "SELECT `id`,`sc_id`,`name`,`scout`FROM `tb_teacher` WHERE `sc_id`=$scid";
+ $sql = "SELECT `id`,`sc_id`,`name`,`pos`,`scout`FROM `tb_teacher` WHERE `sc_id`=$scid";
  for ($i = 0; $i <= 16; $i++) {
   $sql2 = "SELECT count(`id`) FROM `tb_teacher` WHERE `sc_id`=$scid AND `scout` = '$scc[$i]'";
   $result2 = mysqli_query($conn, $sql2);
@@ -44,7 +44,7 @@ if (isset($_GET["scid"]) && (int) $_GET["scid"] != 0) {
  $Null = mysqli_fetch_row($result2)[0];
 
 } else {
- $sql = "SELECT `id`,`sc_id`,`name`,`scout`FROM `tb_teacher` WHERE `sc_id`!=99 AND `sc_id`!=0";
+ $sql = "SELECT `id`,`sc_id`,`name`,`pos`,`scout`FROM `tb_teacher` WHERE `sc_id`!=99 AND `sc_id`!=0";
  for ($i = 0; $i <= 16; $i++) {
   $sql2 = "SELECT count(`id`) FROM `tb_teacher` WHERE `sc_id`!=99 AND `sc_id`!=0 AND `scout` = '$scc[$i]'";
   $result2 = mysqli_query($conn, $sql2);
@@ -98,6 +98,7 @@ if (isset($scid)) {
             <tr>
                 <th class="text-center">โรงเรียน</th>
                 <th class="text-center">ชื่อ - สกุล</th>
+                <th class="text-center">ตำแหน่ง</th>
                 <th class="text-center">วุฒิทางลูกเสือ</th>
                 <th class="text-center">เอกสารวุฒิทางลูกเสือ</th>
             </tr>
@@ -111,6 +112,7 @@ while ($data = mysqli_fetch_assoc($result)):
             <tr>
                 <td><?=$school[$sc_id];?></td>
                 <td><a href="index.php?module=profile&id=<?=$id;?>"><?=$name;?></a></td>
+                <td><?=$pos;?></td>
                 <td> <?php
  if ($scout == "none") {
   echo "ไม่มีวุฒิทางลูกเสือ";

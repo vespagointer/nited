@@ -1,6 +1,7 @@
 <?php
 session_start();
 if ($_SESSION["logined"] != true) {@header("location:login.php");}
+if ($_SESSION["ss_status"] != "school") {@header("location:../logout.php");}
 define("KRITSADAPONG", true);
 require_once "../conn.php";
 require_once "../db.php";
@@ -12,57 +13,57 @@ $m = date('m');
 
 $folder = $base . DIRECTORY_SEPARATOR . $y . DIRECTORY_SEPARATOR . $m;
 if (!@is_dir($base)) {
- $oldmask = umask(0);
- mkdir($base, 0777);
- umask($oldmask);
- fopen($base . DIRECTORY_SEPARATOR . "index.html", "w");
+    $oldmask = umask(0);
+    mkdir($base, 0777);
+    umask($oldmask);
+    fopen($base . DIRECTORY_SEPARATOR . "index.html", "w");
 }
 $sub = $base . DIRECTORY_SEPARATOR . $y;
 if (!@is_dir($sub)) {
- $oldmask = umask(0);
- mkdir($sub, 0777);
- umask($oldmask);
- fopen($sub . DIRECTORY_SEPARATOR . "index.html", "w");
+    $oldmask = umask(0);
+    mkdir($sub, 0777);
+    umask($oldmask);
+    fopen($sub . DIRECTORY_SEPARATOR . "index.html", "w");
 }
 
 if (!@is_dir($folder)) {
- $oldmask = umask(0);
- mkdir($folder, 0777);
- umask($oldmask);
- fopen($folder . DIRECTORY_SEPARATOR . "index.html", "w");
+    $oldmask = umask(0);
+    mkdir($folder, 0777);
+    umask($oldmask);
+    fopen($folder . DIRECTORY_SEPARATOR . "index.html", "w");
 }
 
 if (isset($_FILES["upload"])) {
- $i = 1;
- $x = $folder . DIRECTORY_SEPARATOR . time();
- if (!@is_dir($x)) {
-  $oldmask = umask(0);
-  mkdir($x, 0777);
-  umask($oldmask);
-  fopen($x . DIRECTORY_SEPARATOR . "index.html", "w");
- }
+    $i = 1;
+    $x = $folder . DIRECTORY_SEPARATOR . time();
+    if (!@is_dir($x)) {
+        $oldmask = umask(0);
+        mkdir($x, 0777);
+        umask($oldmask);
+        fopen($x . DIRECTORY_SEPARATOR . "index.html", "w");
+    }
 
- foreach ($_FILES["upload"]["error"] as $key => $error) {
-  if ($error == UPLOAD_ERR_OK) {
-   $tmp_name = $_FILES["upload"]["tmp_name"][$key];
-   $name = sprintf($x . DIRECTORY_SEPARATOR . "%02d.jpg", $i);
-   $image = new SimpleImage($tmp_name);
-   $image->maxarea(1024);
-   $image->save($name);
-   $i++;
-  }
- }
- $f01 = $x . DIRECTORY_SEPARATOR . "01.jpg";
- if (file_exists($f01)) {
-  $today = date("Y-m-d H:i:s");
-  $name = $_POST["gname"];
-  $x = substr($x . "/", 3);
-  $sql = "INSERT INTO `tb_gallery` VALUES(NULL,'$sc_id','$name','$x','$today')";
-  if (mysqli_query($conn, $sql)) {
-   $gid = mysqli_insert_id($conn);
-   copy($f01, $base . DIRECTORY_SEPARATOR . $gid . ".jpg");
-  }
- }
+    foreach ($_FILES["upload"]["error"] as $key => $error) {
+        if ($error == UPLOAD_ERR_OK) {
+            $tmp_name = $_FILES["upload"]["tmp_name"][$key];
+            $name = sprintf($x . DIRECTORY_SEPARATOR . "%02d.jpg", $i);
+            $image = new SimpleImage($tmp_name);
+            $image->maxarea(1024);
+            $image->save($name);
+            $i++;
+        }
+    }
+    $f01 = $x . DIRECTORY_SEPARATOR . "01.jpg";
+    if (file_exists($f01)) {
+        $today = date("Y-m-d H:i:s");
+        $name = $_POST["gname"];
+        $x = substr($x . "/", 3);
+        $sql = "INSERT INTO `tb_gallery` VALUES(NULL,'$sc_id','$name','$x','$today')";
+        if (mysqli_query($conn, $sql)) {
+            $gid = mysqli_insert_id($conn);
+            copy($f01, $base . DIRECTORY_SEPARATOR . $gid . ".jpg");
+        }
+    }
 }
 ?>
 
@@ -89,8 +90,7 @@ if (isset($_FILES["upload"])) {
         <input name="upload[]" type="file" multiple="multiple" accept=".jpg, .jpeg" class="form-control" id="hinput" />
         <button type="button" class="btn btn-secondary w-50  p-3 mb-3 text-white" id="chose">
             <i class="fas fa-images fa-3x"></i></br>เลือกรูป</button>
-        <button type="submit" class="btn btn-success w-100 p-3"><i
-                class="fas fa-layer-group fa-3x"></i><br />สร้างอัลบัมกิจกรรม</button>
+        <button type="submit" class="btn btn-success w-100 p-3"><i class="fas fa-layer-group fa-3x"></i><br />สร้างอัลบัมกิจกรรม</button>
     </form>
 </div>
 
