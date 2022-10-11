@@ -15,9 +15,27 @@ if (!isset($page)) {
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($page == 'index') ? 'active' : ''; ?>" href="index.php">หน้าแรก</a>
                 </li>
+                <?php
+                $sql    = "SELECT * FROM `tb_navlink` ORDER BY `sort` ASC";
+                $result = mysqli_query($conn, $sql);
+                $cnt = mysqli_num_rows($result);
+                if ($cnt > 0) {
+                ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">สารสนเทศ งานนิเทศ</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php while ($data = mysqli_fetch_array($result)) { ?>
+                                <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=page&id=<?= $data["link"]; ?>"><?= $data["name"]; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">สพม.น่าน</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -43,41 +61,38 @@ if (!isset($page)) {
                         สหวิทยาเขต
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="index.php?module=campus">ภาพรวม</a></li>
+                        <li><a class="dropdown-item" href="index.php?module=campus" style="font-size:0.75rem;">ภาพรวม</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=campus&cp=1">ข้อมูลสหวิทยาเขต เวียงปอ</a>
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=1" style="font-size:0.75rem;">ข้อมูลสหวิทยาเขต เวียงปอ</a>
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=campus&cp=2">ข้อมูลสหวิทยาเขต
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=2" style="font-size:0.75rem;">ข้อมูลสหวิทยาเขต
                                 เวียงภูเพียง</a>
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=campus&cp=3">ข้อมูลสหวิทยาเขต วรนคร</a>
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=3" style="font-size:0.75rem;">ข้อมูลสหวิทยาเขต วรนคร</a>
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=campus&cp=4">ข้อมูลสหวิทยาเขต ศิลาทอง</a>
+                        <li><a class="dropdown-item" href="index.php?module=campus&cp=4" style="font-size:0.75rem;">ข้อมูลสหวิทยาเขต ศิลาทอง</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=1">ข้อมูลลูกเสือ เวียงปอ</a>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=1" style="font-size:0.75rem;">ข้อมูลลูกเสือ เวียงปอ</a>
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=2">ข้อมูลลูกเสือ เวียงภูเพียง</a>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=2" style="font-size:0.75rem;">ข้อมูลลูกเสือ เวียงภูเพียง</a>
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=3">ข้อมูลลูกเสือ วรนคร</a>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=3" style="font-size:0.75rem;">ข้อมูลลูกเสือ วรนคร</a>
                         </li>
-                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=4">ข้อมูลลูกเสือ ศิลาทอง</a>
+                        <li><a class="dropdown-item" href="index.php?module=scout2&cp=4" style="font-size:0.75rem;">ข้อมูลลูกเสือ ศิลาทอง</a>
                         </li>
                     </ul>
 
                 </li>
 
-
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">เครื่องมือ</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=mobile">ค้นหาเบอร์โทร</a></li>
-                        <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=onetm3">ที่นั่งสอบ O-Net ม.3</a></li>
                         <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=qrcode">สร้าง QR Code</a></li>
                         <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=shorturl">ย่อลิงก์ (Short URL)</a></li>
                     </ul>
@@ -123,27 +138,27 @@ if (!isset($page)) {
 
                 </li>
 -->
-                <?php if (@$_SESSION["ss_status"] == "user" || @$_SESSION["ss_status"] == "admin") {?>
-                <li class="nav-item"><a class="nav-link" href="./user/">ระบบงานนิเทศก์</a></li>
-                <?php }?>
+                <?php if (@$_SESSION["ss_status"] == "user" || @$_SESSION["ss_status"] == "admin") { ?>
+                    <li class="nav-item"><a class="nav-link" href="./user/">ระบบงานนิเทศก์</a></li>
+                <?php } ?>
 
-                <?php if (@$_SESSION["ss_status"] == "school" || @$_SESSION["ss_status"] == "admin") {?>
-                <li class="nav-item"><a class="nav-link" href="./school/">ระบบข้อมูลโรงเรียน</a></li>
-                <?php }?>
+                <?php if (@$_SESSION["ss_status"] == "school" || @$_SESSION["ss_status"] == "admin") { ?>
+                    <li class="nav-item"><a class="nav-link" href="./school/">ระบบข้อมูลโรงเรียน</a></li>
+                <?php } ?>
 
-                <?php if (@$_SESSION["ss_status"] == "teacher" || @$_SESSION["ss_status"] == "admin") {?>
-                <li class="nav-item"><a class="nav-link" href="./teacher/">ระบบข้อมูลครู</a></li>
-                <?php }?>
+                <?php if (@$_SESSION["ss_status"] == "teacher" || @$_SESSION["ss_status"] == "admin") { ?>
+                    <li class="nav-item"><a class="nav-link" href="./teacher/">ระบบข้อมูลครู</a></li>
+                <?php } ?>
 
-                <?php if (@$_SESSION["ss_status"] == "spm" || @$_SESSION["ss_status"] == "admin") {?>
-                <li class="nav-item"><a class="nav-link" href="./spm/">ระบบ สพม.น่าน</a></li>
-                <?php }?>
+                <?php if (@$_SESSION["ss_status"] == "spm" || @$_SESSION["ss_status"] == "admin") { ?>
+                    <li class="nav-item"><a class="nav-link" href="./spm/">ระบบ สพม.น่าน</a></li>
+                <?php } ?>
 
-                <?php if (@$_SESSION["logined"] == true) {?>
-                <li class="nav-item"><a class="nav-link" href="logout.php">ออกจากระบบ</a></li>
-                <?php } else {?>
-                <li class="nav-item"><a class="nav-link" href="login.php">เข้าสู่ระบบ</a></li>
-                <?php }?>
+                <?php if (@$_SESSION["logined"] == true) { ?>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">ออกจากระบบ</a></li>
+                <?php } else { ?>
+                    <li class="nav-item"><a class="nav-link" href="login.php">เข้าสู่ระบบ</a></li>
+                <?php } ?>
             </ul>
         </div>
     </div>

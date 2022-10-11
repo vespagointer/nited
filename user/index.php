@@ -29,23 +29,23 @@ for ($i = 0; $i < $arrno; $i++) {
 <!doctype html>
 <html lang="th">
 
-    <head>
-        <title>ระบบสมาชิก</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <title>ระบบสมาชิก</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link href="../css/bootstrap.css" rel="stylesheet">
-        <link href="../css/all.css" rel="stylesheet">
-        <!--[if lt IE 8]>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/all.css" rel="stylesheet">
+    <!--[if lt IE 8]>
     <link href="../css/font-awesome-ie7.css" rel="stylesheet">
     <![endif]-->
 
-        <link href="../css/theme.css" rel="stylesheet">
-        <link href="../css/bootstrap-datepicker.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/chosen.css">
-        <link rel="stylesheet" href="../DataTables/datatables.min.css">
-        <style type="text/css">
+    <link href="../css/theme.css" rel="stylesheet">
+    <link href="../css/bootstrap-datepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/chosen.css">
+    <link rel="stylesheet" href="../DataTables/datatables.min.css">
+    <style type="text/css">
         .wrapper {
             display: flex;
         }
@@ -125,145 +125,158 @@ for ($i = 0; $i < $arrno; $i++) {
         .form-control {
             font-size: 0.75rem !important;
         }
+    </style>
+</head>
 
-        </style>
-    </head>
+<body>
 
-    <body>
-
-        <div class="wrapper">
-            <nav id="sidebar" class="bg-primary text-white">
-                <div class="sidebar-header">
-                    <a href="index.php">
-                        <h6><i class="fas fa-users"></i> ระบบสมาชิก</h3>
-                    </a>
-                </div>
-                <ul class="list-unstyled components">
-                    <li>
-                        <a href="#subMenu2" aria-controls="subMenu2" data-bs-toggle="collapse" aria-expanded="true"
-                            class="dropdown-toggle">
-                            <i class="fas fa-book"></i> หนังสือราชการ
-                        </a>
-                        <ul class="collapse list-unstyled" id="subMenu2">
-                            <li><a href="index.php?module=book"><i class="fas fa-folder-open"></i> รายการหนังสือเข้า</a>
-                            </li>
-                            <li><a href="index.php?module=addbook"><i class="fas fa-file-alt"></i> เพิ่มหนังสือเข้า</a>
-                            </li>
-                            <li><a href="index.php?module=newbook"><i class="fas fa-folder-open"></i>
-                                    รายการหนังสือออก</a>
-                            </li>
-                            <li><a href="index.php?module=addnewbook"><i class="fas fa-file-alt"></i>
-                                    เพิ่มหนังสือออก</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#subMenu3" aria-controls="subMenu3" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">
-                            <i class="fas fa-briefcase"></i> โครงการ
-                        </a>
-                        <ul class="collapse list-unstyled" id="subMenu3">
-                            <li><a href="index.php?module=project"><i class="fas fa-archive"></i> รายการโครงการ</a></li>
-                            <li><a href="index.php?module=addproject"><i class="fas fa-file-signature"></i>
-                                    เพิ่มโครงการ</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#subMenu4" aria-controls="subMenu4" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">
-                            <i class="fas fa-address-card"></i> เกียรติบัตร
-                        </a>
-                        <ul class="collapse list-unstyled" id="subMenu4">
-                            <li><a href="index.php?module=certi"><i class="far fa-list-alt"></i> รายการเกียรติบัตร</a>
-                            </li>
-                            <li><a href="index.php?module=addcerti"><i class="fas fa-award"></i>
-                                    เพิ่มเกียรติบัตร</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#subMenu5" aria-controls="subMenu5" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">
-                            <i class="fas fa-tools"></i> เครื่องมือ
-                        </a>
-                        <ul class="collapse list-unstyled" id="subMenu5">
-                            <li><a href="index.php?module=shorturl"><i class="fas fa-link"></i> สร้าง Short URLs</a>
-                            </li>
-                            <li><a href="index.php?module=qrcode"><i class="fas fa-qrcode"></i> สร้าง QR Code</a></li>
-                            <li><a href="index.php?module=ckschool"><i class="fas fa-school"></i> Check School V.1</a>
-                            </li>
-                            <li><a href="index.php?module=ckschoolv2"><i class="fas fa-school"></i> Check School V.2</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li><a href="index.php?module=doc"><i class="fas fa-file-alt"></i> เอกสารงานนิเทศฯ</a></li>
-                    <?php if ($_SESSION["ss_status"] == "admin") {?>
-                    <li><a href="../admin/"><i class="fas fa-server"></i> Admin Control Panel</a></li>
-                    <?php }?>
-                    <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a></li>
-                </ul>
-                <ul class="list-unstyled components">
-                    <li><a href="../index.php"><i class="fas fa-undo"></i> กลับหน้าหลัก</a></li>
-                </ul>
-            </nav>
-            <div id="content" class="container-fluid">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                    <div class="container-fluid">
-                        <button type="button" id="sidebarToggler" class="btn btn-white btn-sm shadow-none">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="text-end">
-                            <img src="../img/profile.png" height="32px" /> <a href="index.php?module=profile">
-                                <?php
-echo $_SESSION["ss_name"] . " ";
-echo $_SESSION["ss_surname"];
-?>
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-                <div class="row col-lg-4 offset-lg-4 alert" id="report">
-                </div>
-                <div id="page">
-                    <?php
-if (empty($module)) {
-    include_once "main.php";
-} else if (file_exists($module . ".php")) {
-    include_once $module . ".php";
-} else {
-    include_once "404.php";
-}
-?>
-                </div>
-                <footer>
-                    <!-- Copyright -->
-                    <div class="text-center p-4 text-black-50">
-                        พัฒนาเว็บไซต์โดย
-                        <a class="text-reset fw-bold" href="<?=__FFF___;?>">กฤษฎาพงษ์ สุตะ</a>
-                    </div>
-                    <!-- Copyright -->
-                </footer>
+    <div class="wrapper">
+        <nav id="sidebar" class="bg-primary text-white">
+            <div class="sidebar-header">
+                <a href="index.php">
+                    <h6><i class="fas fa-users"></i> ระบบสมาชิก</h3>
+                </a>
             </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#subMenu2" aria-controls="subMenu2" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-book"></i> หนังสือราชการ
+                    </a>
+                    <ul class="collapse list-unstyled" id="subMenu2">
+                        <li><a href="index.php?module=book"><i class="fas fa-folder-open"></i> รายการหนังสือเข้า</a>
+                        </li>
+                        <li><a href="index.php?module=addbook"><i class="fas fa-file-alt"></i> เพิ่มหนังสือเข้า</a>
+                        </li>
+                        <li><a href="index.php?module=newbook"><i class="fas fa-folder-open"></i>
+                                รายการหนังสือออก</a>
+                        </li>
+                        <li><a href="index.php?module=addnewbook"><i class="fas fa-file-alt"></i>
+                                เพิ่มหนังสือออก</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#subMenu3" aria-controls="subMenu3" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-briefcase"></i> โครงการ
+                    </a>
+                    <ul class="collapse list-unstyled" id="subMenu3">
+                        <li><a href="index.php?module=project"><i class="fas fa-archive"></i> รายการโครงการ</a></li>
+                        <li><a href="index.php?module=addproject"><i class="fas fa-file-signature"></i>
+                                เพิ่มโครงการ</a>
+                        </li>
+                    </ul>
+                </li>
 
+                <li>
+                    <a href="#subMenu4" aria-controls="subMenu4" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-address-card"></i> เกียรติบัตร
+                    </a>
+                    <ul class="collapse list-unstyled" id="subMenu4">
+                        <li><a href="index.php?module=certi"><i class="far fa-list-alt"></i> รายการเกียรติบัตร</a>
+                        </li>
+                        <li><a href="index.php?module=addcerti"><i class="fas fa-award"></i>
+                                เพิ่มเกียรติบัตร</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#subMenu5" aria-controls="subMenu5" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i> เครื่องมือ
+                    </a>
+                    <ul class="collapse list-unstyled" id="subMenu5">
+                        <li><a href="index.php?module=shorturl"><i class="fas fa-link"></i> สร้าง Short URLs</a>
+                        </li>
+                        <li><a href="index.php?module=qrcode"><i class="fas fa-qrcode"></i> สร้าง QR Code</a></li>
+                        <li><a href="index.php?module=ckschool"><i class="fas fa-school"></i> Check School V.1</a>
+                        </li>
+                        <li><a href="index.php?module=ckschoolv2"><i class="fas fa-school"></i> Check School V.2</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#subMenu6" aria-controls="subMenu6" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-file-alt"></i> หน้าเว็บ</a>
+                    <ul class="collapse list-unstyled" id="subMenu6">
+                        <li><a href="index.php?module=page&do=list">รายการหน้าเว็บ</a></li>
+                        <li><a href="index.php?module=page&do=create">สร้างหน้าเว็บ</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#subMenu7" aria-controls="subMenu7" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-bars"></i> เมนูหน้าหลัก</a>
+                    <ul class="collapse list-unstyled" id="subMenu7">
+                        <li><a href="index.php?module=navlink&do=list">รายการเมนู</a></li>
+                        <li><a href="index.php?module=navlink&do=create">สร้างเมนู</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="index.php?module=doc"><i class="fas fa-file-alt"></i> เอกสารงานนิเทศฯ</a></li>
+                <?php if ($_SESSION["ss_status"] == "admin") { ?>
+                    <li><a href="../admin/"><i class="fas fa-server"></i> Admin Control Panel</a></li>
+                <?php } ?>
+                <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a></li>
+            </ul>
+            <ul class="list-unstyled components">
+                <li><a href="../index.php"><i class="fas fa-undo"></i> กลับหน้าหลัก</a></li>
+            </ul>
+        </nav>
+        <div id="content" class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarToggler" class="btn btn-white btn-sm shadow-none">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="text-end">
+                        <img src="../img/profile.png" height="32px" /> <a href="index.php?module=profile">
+                            <?php
+                            echo $_SESSION["ss_name"] . " ";
+                            echo $_SESSION["ss_surname"];
+                            ?>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="row col-lg-4 offset-lg-4 alert" id="report">
+            </div>
+            <div id="page">
+                <?php
+                if (empty($module)) {
+                    include_once "main.php";
+                } else if (file_exists($module . ".php")) {
+                    include_once $module . ".php";
+                } else {
+                    include_once "404.php";
+                }
+                ?>
+            </div>
+            <footer>
+                <!-- Copyright -->
+                <div class="text-center p-4 text-black-50">
+                    พัฒนาเว็บไซต์โดย
+                    <a class="text-reset fw-bold" href="<?= __FFF___; ?>">กฤษฎาพงษ์ สุตะ</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
         </div>
 
+    </div>
 
 
 
-        <!-- Bootstrap JavaScript Libraries -->
-        <script src="../js/jquery.min.js"></script>
-        <script src="../js/bootstrap.bundle.min.js"></script>
-        <script src="../js/all.js"></script>
-        <script src="../js/bootstrap-datepicker.min.js"></script>
-        <script src="../locales/bootstrap-datepicker.th.min.js"></script>
-        <script src="../js/bootstrap-datepicker-BE.js"></script>
-        <script src="../js/chosen.jquery.min.js"></script>
-        <script src="../DataTables/datatables.min.js"></script>
-        <script>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.js"></script>
+    <script src="../js/bootstrap-datepicker.min.js"></script>
+    <script src="../locales/bootstrap-datepicker.th.min.js"></script>
+    <script src="../js/bootstrap-datepicker-BE.js"></script>
+    <script src="../js/chosen.jquery.min.js"></script>
+    <script src="../DataTables/datatables.min.js"></script>
+    <script src="../js/tinymce/tinymce.min.js"></script>
+    <script>
         $(document).ready(function() {
             $('#report').hide();
             $('#sidebarToggler').on('click', function() {
@@ -291,7 +304,7 @@ if (empty($module)) {
             var input1 = '<input type="text" class="form-control-sm" name="key" required>\n';
             var input2 =
                 "<input type=\"text\" class=\"form-control-sm\" name=\"key\" id=\"sKey\" autocomplete=\"เลือกวันที่\" required>\n";
-            var input3 = '<select class="form-control-sm" name="key" required>\n' + '<?=$sn;?>' +
+            var input3 = '<select class="form-control-sm" name="key" required>\n' + '<?= $sn; ?>' +
                 '\n</select>';
             var data = "";
             //console.log(swhat);
@@ -349,12 +362,12 @@ if (empty($module)) {
                 '<input type="file" class="form-control" name="att[]" id="att"><input type="text" class="form-control mb-2" name="attName[]" id="attName" placeholder="ชื่อเอกสาร" maxlength="250">';
             $("#attFile").append(attForm);
         });
-        </script>
-        <?php
-if (file_exists("js/" . $module . ".js")) {
-    echo "<script src='js/$module.js'></script>";
-}
-?>
-    </body>
+    </script>
+    <?php
+    if (file_exists("js/" . $module . ".js")) {
+        echo "<script src='js/$module.js'></script>";
+    }
+    ?>
+</body>
 
 </html>

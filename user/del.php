@@ -69,5 +69,29 @@ if (isset($_GET["mode"])) {
         mysqli_query($conn, $sql);
 
         @header("location:index.php?module=doc");
+    } else if ($mode == "page") {
+        if (empty($_GET["id"])) {
+            echo "error";
+            exit;
+        }
+        $id = $_GET["id"];
+        $sql = "DELETE FROM `tb_pages` WHERE `id`='$id'";
+        if (mysqli_query($conn, $sql)) {
+            echo "OK";
+        } else {
+            echo "error";
+        }
+    } else if ($mode == "navlink") {
+        if (empty($_GET["id"])) {
+            echo "error";
+            exit;
+        }
+        $id = $_GET["id"];
+        $sql = "DELETE FROM `tb_navlink` WHERE `id`='$id'";
+        if (mysqli_query($conn, $sql)) {
+            echo "OK";
+        } else {
+            echo "error";
+        }
     }
 }
