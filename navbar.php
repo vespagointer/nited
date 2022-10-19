@@ -23,18 +23,25 @@ if (!isset($page)) {
                 $sql    = "SELECT * FROM `tb_navlink` ORDER BY `sort` ASC";
                 $result = mysqli_query($conn, $sql);
                 $cnt = mysqli_num_rows($result);
-                if ($cnt > 0) {
                 ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">สารสนเทศ งานนิเทศ</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php while ($data = mysqli_fetch_array($result)) { ?>
-                                <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=page&id=<?= $data["link"]; ?>"><?= $data["name"]; ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">สารสนเทศ งานนิเทศ</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <?php while ($data = mysqli_fetch_array($result)) { ?>
+                            <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=page&id=<?= $data["link"]; ?>"><?= $data["name"]; ?></a></li>
+                        <?php } ?>
+                        <?php
+                        $sql2    = "SELECT `id`,`name` FROM `tb_group`";
+                        $result2 = mysqli_query($conn, $sql2);
+                        while ($data2 = mysqli_fetch_array($result2)) { ?>
+                            <li><a class="dropdown-item" style="font-size:0.75rem;" href="index.php?module=group&id=<?= $data2["id"]; ?>"><?= $data2["name"]; ?></a></li>
+                        <?php } ?>
+
+
+                    </ul>
+                </li>
                 <?php
-                }
+
                 ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">สพม.น่าน</a>

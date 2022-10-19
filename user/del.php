@@ -81,6 +81,18 @@ if (isset($_GET["mode"])) {
         } else {
             echo "error";
         }
+    } else if ($mode == "group") {
+        if (empty($_GET["id"])) {
+            echo "error";
+            exit;
+        }
+        $id = $_GET["id"];
+        $sql = "DELETE FROM `tb_group` WHERE `id`='$id'";
+        if (mysqli_query($conn, $sql)) {
+            echo "OK";
+        } else {
+            echo "error";
+        }
     } else if ($mode == "navlink") {
         if (empty($_GET["id"])) {
             echo "error";

@@ -195,7 +195,13 @@ for ($i = 0; $i < $arrno; $i++) {
 
                     </ul>
                 </li>
-
+                <li>
+                    <a href="#subMenu8" aria-controls="subMenu8" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-file-alt"></i> จัดกลุ่มโรงเรียน</a>
+                    <ul class="collapse list-unstyled" id="subMenu8">
+                        <li><a href="index.php?module=group&do=list">การจัดกลุ่มโรงเรียน</a></li>
+                        <li><a href="index.php?module=group&do=create">สร้างกลุ่มใหม่</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="#subMenu6" aria-controls="subMenu6" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-file-alt"></i> หน้าเว็บ</a>
                     <ul class="collapse list-unstyled" id="subMenu6">
